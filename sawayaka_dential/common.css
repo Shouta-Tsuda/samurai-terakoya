@@ -1,0 +1,374 @@
+@charset "utf-8";
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-main);
+  line-height: 1.7;
+}
+
+/* 固定ヘッダーを実装⇒ページ内リンクにおいて目的のポイントまで遷移⇒JSで実装の場合は不要 */
+html {
+  scroll-behavior: smooth;
+}
+
+.about {
+  scroll-margin-top: 180px;
+}
+
+/* Font styles */
+/* Color styles */
+
+:root {
+  --font-body: "BIZ UDPGothic", sans-serif;
+  --font-fv: "Zen Kaku Gothic New", sans-serif;
+  --font-en: "Inria Serif", serif;
+
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #DDECF7;
+  --color-text-primary: #333333;
+  --color-text-secondary: #666666;
+  --color-brand-main: #25C0D3;
+  --color-brand-accent: #1A6EB0;
+  --color-accent1: #BBABC8;
+  --color-accent2: #A61742;
+
+  --space-xxs: 8px;
+  --space-xs: 16px;
+  --space-s: 24px;
+  --space-m: 32px;
+  --space-l: 48px;
+  --space-xl: 64px;
+
+  --spacing: 0.05em;
+  --spacing: 0.1em;
+}
+
+/* Google Fontsのコードをコピー⇒不要なのでは？*/
+
+/* .biz-udpgothic-regular {
+  font-family: "BIZ UDPGothic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.zen-kaku-gothic-new-regular {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.inria-serif-light {
+  font-family: "Inria Serif", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.inria-serif-regular {
+  font-family: "Inria Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.inria-serif-bold {
+  font-family: "Inria Serif", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.inria-serif-light-italic {
+  font-family: "Inria Serif", serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.inria-serif-regular-italic {
+  font-family: "Inria Serif", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.inria-serif-bold-italic {
+  font-family: "Inria Serif", serif;
+  font-weight: 700;
+  font-style: italic;
+} */
+
+/* 共通部分 */
+
+/* 横幅制限 */
+.wrapper {
+  /* max-width: 1312px; */
+  margin: 0 auto;
+  padding: 0 64px;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 0 var(--space-s);
+  }
+}
+
+
+.section {
+  padding: 0px var(--space-l);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 36px;
+  margin-top: var(--space-l);
+  margin-bottom: var(--space-l);
+}
+
+/* =========================
+   header
+========================= */
+.header {
+  background-color: var(--color-bg-primary);
+  height: 180px;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+/* ロゴ */
+.header__logo img {
+  height: 80px;
+}
+
+/* ナビ */
+.header__nav_list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 32px;
+}
+
+/* .header__nav_item + .header__nav_item{
+    margin-left: 40px;
+} */
+
+.header__nav a {
+  text-decoration: none;
+  color: var(--color-text-primary);
+  font-weight: bold;
+}
+
+/* ホバー時：不透明度50% */
+.header__nav_item:hover,
+.header__nav_item:focus {
+  opacity: 0.5;
+}
+
+/* 右側 */
+.header__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.header__tel {
+  display: flex;
+}
+
+/* 電話 */
+.header__tel-number {
+  text-decoration: none;
+  color: var(--color-text-primary);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Header Responsive */
+@media (max-width: 1400px) {
+  .header__inner {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .header__nav_list {
+    gap: 20px;
+  }
+
+  .header__nav-link {
+    font-size: 14px;
+  }
+
+  .header__inner {
+    height: 140px;
+    /* Reduce height slightly if needed */
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .header {
+    height: 140px;
+  }
+}
+
+@media (max-width: 900px) {
+  .header__nav {
+    display: none;
+    /* Consider hamburger menu for mobile later, or simple stack */
+  }
+
+  /* For now, just preventing breakage as requested "prevent breakage" 
+     If the user didn't ask for hamburger, maybe just hide or wrap?
+     The plan said: "Allow wrapping or scaling... I will stack elements if necessary"
+  */
+}
+
+/* Re-reading plan: "Mobile view adjustments are assumed to be part of 'prevent breakage'" 
+   "Allow wrapping or scaling of elements to prevent layout breakage before the mobile breakpoint."
+*/
+@media (max-width: 1024px) {
+  .header__nav_list {
+    gap: 16px;
+  }
+
+  .header__logo img {
+    height: 60px;
+  }
+
+  .header__inner {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .header {
+    height: 100px;
+  }
+}
+
+
+/* =========================
+   button-reservation
+========================= */
+.button-reservation {
+  background: var(--color-brand-accent);
+  color: var(--color-bg-primary);
+  padding: var(--space-xs);
+  border-radius: var(--space-xs);
+  box-shadow: inset 0 0 0 3px var(--color-bg-primary);
+  text-decoration: none;
+  /* font-weight: 600; */
+  transition: opacity 0.3s ease;
+}
+
+/* ホバー時：不透明度50%⇒ホバー時にbuttomの色が変わる方がアクセシビリティの観点から良いのでは？ */
+.header__web-button:hover,
+.header__web-button:focus {
+  opacity: 0.5;
+}
+
+
+/* 見出し（英語は Inria） */
+.section-title__en {
+  font-family: var(--font-en);
+  font-size: 14px;
+  letter-spacing: var(--spacing-xs);
+  color: var(--color-text-primary);
+}
+
+
+/* FV 特別フォント */
+.fv__text {
+  font-family: var(--font-fv);
+}
+
+
+
+
+/* トップページへ戻るボタンの実装（中身は一部カスタマイズ可能） */
+.pagetop {
+  cursor: pointer;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: 0.5s;
+  color: var(--color-brand-main);
+  background: #fff;
+  border: 1px solid var(--color-brand-main);
+  opacity: 0;
+}
+
+.pagetop:hover {
+  box-shadow: 0 0 10px var(--color-brand-main);
+}
+
+/* =========================
+   footer-below
+========================= */
+
+
+
+/* =========================
+   footer
+========================= */
+
+footer {
+  background-color: var(--color-bg-secondary);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-l);
+  padding-bottom: var(--space-l);
+}
+
+
+.footer-logo img {
+  height: auto;
+  width: auto;
+  max-height: 80px;
+}
+
+.footer-content {
+  text-align: center;
+  font-size: 18px;
+  line-height: var(--line-height-base);
+  color: var(--color-text-primary);
+  letter-spacing: var(--spacing-xxs);
+  flex: 1;
+  /* Allow content to take available space */
+  padding: 0 var(--space-m);
+}
+
+.icon-list {
+  display: flex;
+  list-style: none;
+  gap: var(--space-xs);
+  align-items: center;
+}
+
+.icon-link img {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+.footer-copy {
+  text-align: center;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  padding-bottom: var(--space-l);
+}
