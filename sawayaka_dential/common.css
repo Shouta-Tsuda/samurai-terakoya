@@ -1,11 +1,5 @@
 @charset "utf-8";
 
-body {
-  font-family: var(--font-body);
-  color: var(--text-main);
-  line-height: 1.7;
-}
-
 /* 固定ヘッダーを実装⇒ページ内リンクにおいて目的のポイントまで遷移⇒JSで実装の場合は不要 */
 html {
   scroll-behavior: smooth;
@@ -19,9 +13,16 @@ html {
 /* Color styles */
 
 :root {
-  --font-body: "BIZ UDPGothic", sans-serif;
-  --font-fv: "Zen Kaku Gothic New", sans-serif;
-  --font-en: "Inria Serif", serif;
+  --font-body: "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    "Noto Sans JP",
+    sans-serif;
+
+  ;
+  /* --font-fv: "Zen Kaku Gothic New", sans-serif; */
+  /* FirstViewで個別に指定 */
 
   --font-weight-regular: 400;
   --font-weight-bold: 700;
@@ -42,85 +43,107 @@ html {
   --space-l: 48px;
   --space-xl: 64px;
 
-  --spacing: 0.05em;
-  --spacing: 0.1em;
+  --spacing-xs: 0.05em;
+  --spacing-s: 0.1em;
+  --spacing-xxs: 0.025em;
+
+  /* [修正点]: 流動的なline-height */
+  --line-height-base: 1.8;
+  --line-height-short: 1.5;
 }
 
-/* Google Fontsのコードをコピー⇒不要なのでは？*/
-
-/* .biz-udpgothic-regular {
-  font-family: "BIZ UDPGothic", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  line-height: 1.7;
+  letter-spacing: var(--spacing-s);
 }
-
-.zen-kaku-gothic-new-regular {
-  font-family: "Zen Kaku Gothic New", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.inria-serif-light {
-  font-family: "Inria Serif", serif;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.inria-serif-regular {
-  font-family: "Inria Serif", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.inria-serif-bold {
-  font-family: "Inria Serif", serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.inria-serif-light-italic {
-  font-family: "Inria Serif", serif;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.inria-serif-regular-italic {
-  font-family: "Inria Serif", serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.inria-serif-bold-italic {
-  font-family: "Inria Serif", serif;
-  font-weight: 700;
-  font-style: italic;
-} */
 
 /* 共通部分 */
 
 /* 横幅制限 */
 .wrapper {
-  /* max-width: 1312px; */
+  max-width: 1312px;
   margin: 0 auto;
-  padding: 0 64px;
+  /* [修正点]: パディングを流動化 */
+  padding: 0 clamp(1rem, 4vw, 4rem);
 }
 
-@media (max-width: 768px) {
-  .wrapper {
-    padding: 0 var(--space-s);
-  }
-}
+/* [修正点]: clamp()で流動化したため個別のメディアクエリは不要 */
 
-
+/* [修正点]: セクション余白を流動化 */
 .section {
-  padding: 0px var(--space-l);
+  padding: clamp(2rem, 5vw, 3rem) 0;
+}
+
+/* =========================
+   section-title
+========================= */
+.section-header {
+  text-align: center;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
+  width: 100%;
 }
 
 .section-title {
-  text-align: center;
-  font-size: 36px;
-  margin-top: var(--space-l);
-  margin-bottom: var(--space-l);
+  /* [修正点]: font-sizeを流動化 */
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.section-title::before {
+  content: "";
+  display: inline-block;
+  /* [修正点]: アイコンサイズを流動化 */
+  width: clamp(2rem, 4vw, 3rem);
+  height: clamp(2rem, 4vw, 3rem);
+  background-image: url(../images/icon/title_icon2.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  margin-right: var(--space-xs);
+}
+
+.section-title::after {
+  content: "";
+  display: inline-block;
+  width: clamp(2rem, 4vw, 3rem);
+  height: clamp(2rem, 4vw, 3rem);
+  background-image: url(../images/icon/title_icon2.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  margin-left: var(--space-xs);
+}
+
+.section-title-english {
+  /* [修正点]: font-sizeを流動化 */
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+  color: var(--color-text-secondary);
+}
+
+/* =========================
+   button-reservation
+========================= */
+.button-reservation {
+  background: var(--color-brand-accent);
+  color: var(--color-bg-primary);
+  padding: var(--space-xs);
+  border-radius: var(--space-xs);
+  box-shadow: inset 0 0 0 3px var(--color-bg-primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-bold);
+  transition: opacity 0.3s ease;
+}
+
+/* ホバー時：不透明度50%⇒ホバー時にbuttomの色が変わる方がアクセシビリティの観点から良いのでは？ */
+.header__web-button:hover,
+.header__web-button:focus {
+  opacity: 0.5;
 }
 
 /* =========================
@@ -128,20 +151,24 @@ html {
 ========================= */
 .header {
   background-color: var(--color-bg-primary);
-  height: 180px;
+  /* height: 180px; */
 }
 
 .header__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  /* [修正点]: 要素間の余白をgapで一括管理 */
+  gap: clamp(0.75rem, 2vw, 2rem);
 }
 
 /* ロゴ */
 .header__logo img {
-  height: 80px;
+  width: 100%;
+  height: auto;
+  max-height: 80px;
+  /* [修正点]: ロゴの縦横比が崩れないよう保護 */
+  flex-shrink: 0;
 }
 
 /* ナビ */
@@ -149,17 +176,12 @@ html {
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 32px;
+  /* [修正点]: 固定gap → 流動gap */
+  gap: clamp(0.75rem, 2vw, 2rem);
 }
 
-/* .header__nav_item + .header__nav_item{
-    margin-left: 40px;
-} */
-
-.header__nav a {
-  text-decoration: none;
-  color: var(--color-text-primary);
-  font-weight: bold;
+.header__nav-link {
+  font-weight: var(--font-weight-bold);
 }
 
 /* ホバー時：不透明度50% */
@@ -172,105 +194,127 @@ html {
 .header__cta {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 16px;
+  align-items: center;
+  /* [修正点]: 固定gap → 流動gap + shrink防止 */
+  gap: clamp(0.5rem, 1.5vw, 1rem);
+  flex-shrink: 0;
 }
 
+.header__cta .button-reservation {
+  width: 100%;
+  height: auto;
+}
+
+/* アイコンをpngで作成し、::beforeで配置することにより、不要になる */
 .header__tel {
   display: flex;
-}
-
-/* 電話 */
-.header__tel-number {
+  align-items: center;
   text-decoration: none;
   color: var(--color-text-primary);
   font-size: 18px;
   font-weight: bold;
 }
 
-/* Header Responsive */
-@media (max-width: 1400px) {
-  .header__inner {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
+/* 電話 */
+
+.header__tel::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url(../images/icon/phone1.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  margin-right: var(--space-xxs);
 }
 
-@media (max-width: 1200px) {
+/* =========================
+   ハンバーガーメニュー
+========================= */
+
+/* [修正点]: CSSのみで3本線アイコンを実装 */
+.hamburger {
+  display: none; /* デスクトップでは非表示 */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+  flex-shrink: 0;
+}
+
+.hamburger__line {
+  display: block;
+  width: 1.75rem;
+  height: 3px;
+  background-color: var(--color-text-primary);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger__line + .hamburger__line {
+  margin-top: 5px;
+}
+
+/* ×ボタンへの変形 */
+.hamburger.is-open .hamburger__line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger.is-open .hamburger__line:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.is-open .hamburger__line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Header Responsive — clamp() で段階的メディアクエリを統合 */
+.header__nav-link {
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+}
+
+/* [修正点]: 900px以下でハンバーガーメニューに切り替え */
+@media (max-width: 900px) {
+  .hamburger {
+    display: block;
+  }
+
+  .header__nav {
+    /* オーバーレイ表示 */
+    position: fixed;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.97);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* 閉じている状態 */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .header__nav.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
   .header__nav_list {
-    gap: 20px;
+    flex-direction: column;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+    text-align: center;
   }
 
   .header__nav-link {
-    font-size: 14px;
+    font-size: clamp(1rem, 3vw, 1.25rem);
   }
 
-  .header__inner {
-    height: 140px;
-    /* Reduce height slightly if needed */
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
-
-  .header {
-    height: 140px;
+  .header__cta {
+    display: none; /* モバイルではCTAをヘッダーから隠す（firstview-bottomで代替） */
   }
 }
 
-@media (max-width: 900px) {
-  .header__nav {
-    display: none;
-    /* Consider hamburger menu for mobile later, or simple stack */
-  }
-
-  /* For now, just preventing breakage as requested "prevent breakage" 
-     If the user didn't ask for hamburger, maybe just hide or wrap?
-     The plan said: "Allow wrapping or scaling... I will stack elements if necessary"
-  */
-}
-
-/* Re-reading plan: "Mobile view adjustments are assumed to be part of 'prevent breakage'" 
-   "Allow wrapping or scaling of elements to prevent layout breakage before the mobile breakpoint."
-*/
-@media (max-width: 1024px) {
-  .header__nav_list {
-    gap: 16px;
-  }
-
-  .header__logo img {
-    height: 60px;
-  }
-
-  .header__inner {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-
-  .header {
-    height: 100px;
-  }
-}
-
-
-/* =========================
-   button-reservation
-========================= */
-.button-reservation {
-  background: var(--color-brand-accent);
-  color: var(--color-bg-primary);
-  padding: var(--space-xs);
-  border-radius: var(--space-xs);
-  box-shadow: inset 0 0 0 3px var(--color-bg-primary);
-  text-decoration: none;
-  /* font-weight: 600; */
-  transition: opacity 0.3s ease;
-}
-
-/* ホバー時：不透明度50%⇒ホバー時にbuttomの色が変わる方がアクセシビリティの観点から良いのでは？ */
-.header__web-button:hover,
-.header__web-button:focus {
-  opacity: 0.5;
-}
 
 
 /* 見出し（英語は Inria） */
@@ -281,10 +325,12 @@ html {
   color: var(--color-text-primary);
 }
 
+/* =========================
+   firstview
+========================= */
 
-/* FV 特別フォント */
-.fv__text {
-  font-family: var(--font-fv);
+.firstview {
+  font-family: "Zen Kaku Gothic New", sans-serif;
 }
 
 
@@ -331,6 +377,9 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* [修正点]: 狭い画面で自動折り返し + gap一括管理 */
+  flex-wrap: wrap;
+  gap: clamp(1rem, 3vw, 2rem);
   padding-top: var(--space-l);
   padding-bottom: var(--space-l);
 }
@@ -344,12 +393,13 @@ footer {
 
 .footer-content {
   text-align: center;
-  font-size: 18px;
+  /* [修正点]: font-size流動化 */
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
   line-height: var(--line-height-base);
   color: var(--color-text-primary);
   letter-spacing: var(--spacing-xxs);
   flex: 1;
-  /* Allow content to take available space */
+  min-width: 0; /* flex-itemのはみ出し防止 */
   padding: 0 var(--space-m);
 }
 
@@ -364,11 +414,29 @@ footer {
   width: 36px;
   height: 36px;
   display: block;
+  /* [修正点]: 600px以下でもアイコンが潰れないよう保護 */
+  flex-shrink: 0;
 }
 
 .footer-copy {
   text-align: center;
-  font-size: 12px;
+  font-size: clamp(0.625rem, 1vw, 0.75rem);
   color: var(--color-text-secondary);
   padding-bottom: var(--space-l);
+}
+
+/* [修正点]: 768px以下でフッターを縦積み + ロゴ・アイコン中央揃え */
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-logo {
+    flex-shrink: 0;
+  }
+
+  .icon-list {
+    justify-content: center;
+  }
 }
