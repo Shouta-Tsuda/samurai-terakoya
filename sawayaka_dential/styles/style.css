@@ -1,54 +1,38 @@
 @charset "utf-8";
 
-:root {
-  --font-body: "BIZ UDPGothic", sans-serif;
-  --font-fv: "Zen Kaku Gothic New", sans-serif;
-  --font-en: "Inria Serif", serif;
-
-  --font-weight-regular: 400;
-  --font-weight-bold: 700;
-
-  --color-bg-primary: #FFFFFF;
-  --color-bg-secondary: #DDECF7;
-  --color-text-primary: #333333;
-  --color-text-secondary: #666666;
-  --color-brand-main: #25C0D3;
-  --color-brand-accent: #1A6EB0;
-  --color-accent1: #BBABC8;
-  --color-accent2: #A61742;
-
-  --space-xxs: 8px;
-  --space-xs: 16px;
-  --space-s: 24px;
-  --space-m: 32px;
-  --space-l: 48px;
-  --space-xl: 64px;
-
-  --spacing-xxs: 0.05em;
-  --spacing-xs: 0.1em;
-
-  --line-height-base: 1.7;
-  --line-height-short: 1.4;
-}
-
 
 /* =========================
    firstview
 ========================= */
 
-.firstview {
+.swiper {
   width: 100%;
+  height: auto;
+}
+
+.firstview {
   position: relative;
   overflow: hidden;
 }
 
-body.has-fixed-header .firstview {
+/* [修正点]: Swiperフェード効果で非アクティブスライドのテキストが重なるのを防止 */
+.firstview .swiper-slide:not(.swiper-slide-active) .firstview__content {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.firstview .swiper-slide-active .firstview__content {
+  opacity: 1;
+  transition: opacity 0.5s ease 0.3s;
+}
+
+/* body.has-fixed-header .firstview {
   height: calc(100svh - 80px);
 }
 
 .firstview.swiper {
   height: 100%;
 }
+親の高さが固定されている時のみ
 
 .firstview .swiper-slide {
   height: 100%;
@@ -67,7 +51,7 @@ body.has-fixed-header .firstview {
   position: absolute;
   inset: 0;
   z-index: 1;
-}
+} */
 
 /* ===================================
    firstviewテキスト
@@ -76,25 +60,15 @@ body.has-fixed-header .firstview {
 .firstview__content {
   position: absolute;
   top: 50%;
-  /* Align with container (1312px max width + 64px padding) */
-  /* Default for smaller screens */
-  left: 24px;
+  /* [修正点]: left を clamp() で流動化 */
+  left: clamp(1rem, 4vw, 4rem);
   transform: translateY(-50%);
   width: auto;
   max-width: 90%;
 
   color: var(--color-bg-primary);
   font-weight: var(--font-weight-bold);
-  font-family: var(--font-fv);
   z-index: 2;
-}
-
-@media (min-width: 768px) {
-  .firstview__content {
-    left: 64px;
-    /* Match container padding */
-    max-width: 880px;
-  }
 }
 
 @media (min-width: 1440px) {
@@ -104,97 +78,80 @@ body.has-fixed-header .firstview {
 }
 
 .firstview__content p {
-  font-size: 36px;
+  /* [修正点]: font-size を clamp() で流動化 */
+  font-size: clamp(1.125rem, 3vw, 2.25rem);
   letter-spacing: var(--spacing-xxs);
   line-height: var(--line-height-base);
   text-shadow: 0px 0px var(--space-xs) var(--color-text-primary);
-  /* テキストを際立たせるための影 */
 }
 
 /* ===================================
-   firstview右下カレンダー
+   firstview,access共通calendarコンポーネント
 =================================== */
 
-.firstview-calendar {
+.calendar-container {
+  padding: var(--space-s);
+  border-radius: var(--space-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  width: 100%;
+  /* [修正点]: 400px以下でテーブルがはみ出す場合に横スクロール可能にする */
+  overflow-x: auto;
+}
+
+.calendar-container__title {
+  margin-bottom: var(--space-xxs);
+  padding-left: var(--space-s);
+  font-size: var(--space-xs);
+}
+
+.calendar-container table {
+  width: 100%;
+  /* [修正点]: テーブルが一定幅以下に縮まないよう保護 */
+  min-width: 420px;
+  border-collapse: collapse;
+  font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+  text-align: center;
+}
+
+.calendar-container th,
+.calendar-container td {
+  padding: calc(var(--space-xxs) / 2);
+}
+
+/* ===================================
+   firstview　calendar固有スタイル
+=================================== */
+
+.firstview__calendar {
   position: absolute;
-  right: 5%;
+  /* [修正点]: right を clamp() で流動化 */
+  right: clamp(1rem, 4vw, 4rem);
   bottom: 8%;
   width: 420px;
   max-width: 90%;
-  /* Prevent overflow on mobile */
-
-  padding: var(--space-s);
-  border-radius: var(--space-xs);
-
   background: rgba(255, 255, 255, 0.6);
-
   border: 1px solid rgba(255, 255, 255, 0.6);
-
   box-shadow: 0 var(--space-xs) var(--space-l) rgba(0, 0, 0, 0.15);
-
   z-index: 5;
 }
 
-@media (min-width: 768px) {
-  .firstview-calendar {
-    right: 64px;
-    /* Match container padding */
-  }
-}
-
 @media (min-width: 1440px) {
-  .firstview-calendar {
+  .firstview__calendar {
     right: calc(50% - 592px);
   }
 }
 
-@media (max-width: 768px) {
-  .firstview-calendar {
-    bottom: 20px;
-    right: 50%;
-    transform: translateX(50%);
-    /* Center on mobile */
-    width: 90%;
+/* [修正点]: 769px以下でカレンダーを縦積みに切り替え（テキストとの重なり解消） */
+@media (max-width: 769px) {
+  .firstview__calendar {
+    position: static;
+    width: 100%;
+    max-width: 100%;
     padding: var(--space-xs);
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.85);
   }
-}
-
-.firstview-calendar__title {
-  font-weight: var(--font-weight-bold);
-  margin-bottom: var(--space-xxs);
-  font-size: var(--space-xs);
-  color: var(--color-text-primary);
-}
-
-/* table */
-
-.firstview-calendar table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-  text-align: center;
-  color: var(--color-text-primary);
-}
-
-.firstview-calendar th {
-  font-weight: var(--font-weight-bold);
-  padding: calc(var(--space-xxs) / 2);
-  color: var(--color-text-secondary);
-}
-
-.firstview-calendar td {
-  padding: calc(var(--space-xxs) / 2);
-  font-weight: var(--font-weight-bold);
-}
-
-/* ○ */
-.firstview-calendar td.open {
-  color: var(--color-text-primary);
-}
-
-/* × */
-.firstview-calendar td.closed {
-  color: var(--color-text-secondary);
 }
 
 /* =========================
@@ -204,71 +161,47 @@ body.has-fixed-header .firstview {
 .firstview-bottom {
   background-color: var(--color-brand-main);
   position: relative;
-}
-
-.firstview-bottom .container {
-  min-height: 120px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  /* For absolute positioning of button */
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: var(--space-s);
+  padding-bottom: var(--space-s);
 }
 
 .firstview-bottom_text {
   color: var(--color-bg-primary);
-  font-size: 18px;
+  /* [修正点]: font-size を clamp() で流動化 */
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
   font-weight: var(--font-weight-bold);
   text-align: center;
   line-height: var(--line-height-base);
   letter-spacing: var(--spacing-xs);
   width: 100%;
-  /* Ensure text centering works relative to container width */
 }
 
 .firstview-bottom .button-reservation {
   position: absolute;
-  right: 64px;
-  /* Align with container padding */
+  right: 4.5%;
   top: 50%;
   transform: translateY(-50%);
-  margin-left: 0;
 }
 
+/* [修正点]: 1024px以下で縦積み（clamp()によりメディアクエリ統合） */
 @media (max-width: 1024px) {
-  .firstview-bottom .container {
+  .firstview-bottom {
+    display: flex;
     flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    gap: var(--space-s);
+    padding: var(--space-s) clamp(1rem, 4vw, 2rem);
   }
 
   .firstview-bottom .button-reservation {
     position: static;
     transform: none;
+    width: fit-content;
   }
 
   .firstview-bottom_text {
     width: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  .firstview-bottom .container {
-    flex-direction: column;
     text-align: center;
-    justify-content: center;
-  }
-
-  .firstview-bottom_text {
-    text-align: center;
-    margin-bottom: 0px;
-    /* gap handles spacing */
-  }
-
-  .firstview-bottom .button-reservation {
-    margin-left: 0;
   }
 }
 
@@ -278,38 +211,19 @@ body.has-fixed-header .firstview {
 
 .reason {
   background-color: var(--color-bg-primary);
-  padding-top: var(--space-l);
-  /* Updated for required spacing */
-}
-
-.reason-header {
-  text-align: center;
-  margin-bottom: var(--space-l);
-}
-
-.reason-title {
-  font-size: 36px;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-xs);
-}
-
-.reason-sub {
-  font-size: 18px;
-  font-family: var(--font-en);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-secondary);
 }
 
 .reason-content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  /* [修正点]: gap を clamp() で流動化 */
+  gap: clamp(1.5rem, 4vw, 3rem) clamp(0.75rem, 2vw, 1.5rem);
 }
 
 .reason-card {
-  width: 400px;
-  margin-bottom: var(--space-l);
+  /* [修正点]: 固定幅 → auto-fit グリッド的な最小/最大幅 */
+  width: clamp(280px, 30vw, 400px);
 }
 
 .reason-card img {
@@ -317,10 +231,14 @@ body.has-fixed-header .firstview {
   display: block;
   border-radius: var(--space-xs);
   margin-bottom: var(--space-xs);
+  /* [修正点]: 画像アスペクト比保護 */
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
 }
 
 .reason-body {
-  margin-top: var(--space-xxs);
+  /* [修正点]: font-size を clamp() で流動化 */
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
 }
 
 .reason-card__head {
@@ -333,103 +251,67 @@ body.has-fixed-header .firstview {
   display: inline-block;
   background-color: var(--color-accent1);
   color: var(--color-bg-primary);
-  padding: 4px var(--space-xs);
-  border-radius: var(--space-xs);
-  font-size: 14px;
-  /* margin-bottom: var(--space-xs); */
+  padding: var(--space-xxs) var(--space-xs);
+  border-radius: var(--space-xxs);
+  /* [修正点]: font-size を clamp() で流動化 */
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
   line-height: 1;
   flex-shrink: 0;
 }
 
 .reason-card h3 {
-  font-size: 18px;
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
-  /* margin-bottom: 0; */
   margin-left: var(--space-xs);
-  letter-spacing: var(--spacing-xxs);
 }
 
 .reason-card p {
-  font-size: 18px;
   line-height: var(--line-height-base);
   color: var(--color-text-secondary);
-  letter-spacing: var(--spacing-xs);
 }
 
 /* ==============================
    message Section
+   - .message-bg-square は .message-img-container 内に配置。
+   - サイズ: 写真の高さの90%の正方形
+   - 位置: 写真の左下を起点にはみ出す
+   - 手法: position: absolute + % でサイズを親に連動させ、
+     はみ出し分の margin は親と同じ vw 単位で算出し、
+     画面幅が変わっても比率を完全に維持する。
 ============================== */
 
 .message {
   background-color: var(--color-bg-secondary);
-  padding-top: var(--space-l);
-  padding-bottom: var(--space-l);
-  overflow: hidden;
-  position: relative;
+  overflow: visible;
 }
 
-.message-header {
-  text-align: center;
-  margin-bottom: var(--space-l);
-  width: 100%;
-  /* Ensure it spans the right col */
-}
-
-.message-title {
-  font-size: 36px;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-xs);
-}
-
-.message-sub {
-  font-size: 18px;
-  font-family: var(--font-en);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-secondary);
-}
-
-/* Split Content */
 .message-body {
   display: flex;
-  width: 100%;
+  justify-content: center;
   align-items: center;
-  /* Center vertically */
-  z-index: 2;
-  /* Bring content above bg square */
-  position: relative;
+  padding: 0 5%;
+  gap: 0 5%;
 }
 
-.message-left {
+.message-text-container {
   width: 50%;
   display: flex;
-  justify-content: flex-end;
-  /* Align image to center line */
-  position: relative;
-}
-
-.message-right {
-  width: 50%;
-  padding-left: var(--space-l);
-  padding-right: 5%;
-  /* Right padding */
-  display: flex;
-  /* Flex to center-align header and content */
   flex-direction: column;
   align-items: center;
-  /* Center header */
 }
 
-/* Image Container */
+/* ---- Image Container ---- */
+/* コンテナサイズ = 41.11vw (PC)
+   bg-square はみ出し = コンテナの 12% = 41.11vw × 0.12 ≈ 4.93vw
+   margin でそのスペースを確保する（同じ vw 単位で基準を統一） */
 .message-img-container {
   position: relative;
-  /* Width based on 592/1440 = 41.11vw */
   width: 41.11vw;
   height: 41.11vw;
-  /* Square */
-  /* Cap max size primarily to prevent it getting gigantic on huge screens, though user said "proportional" */
-  /* max-width: 592px; max-height: 592px; User requested proportional to 1440px width. If screen > 1440, it grows. */
+  flex-shrink: 0;
+  /* はみ出し分を vw で確保（コンテナ幅 × 12%） */
+  margin-left: 4.93vw;
+  margin-bottom: 4.93vw;
 }
 
 .message-director-img {
@@ -438,54 +320,54 @@ body.has-fixed-header .firstview {
   object-fit: cover;
   position: relative;
   z-index: 2;
-  /* In front of bg square */
 }
 
-/* Background Square - Anchored to Section Bottom-Left */
+/* ---- Background Square ---- */
+/* サイズ = 親コンテナの高さの90%の正方形
+   配置 = 親の左下を起点に 12% ずつはみ出す */
 .message-bg-square {
   position: absolute;
-  width: 41.11vw;
-  /* Matches image size */
-  height: 41.11vw;
+  width: 90%;
+  height: 90%;
   background-color: var(--color-accent2);
-  bottom: 0;
-  /* Offset estimation */
-  left: 0;
-  /* Offset to left */
+  left: -12%;
+  bottom: -12%;
   z-index: 1;
 }
 
-/* Name Card - Anchored to Image Bottom-Left */
+/* ---- Name Card ---- */
 .message-name-card {
   position: absolute;
   bottom: 0;
   left: 0;
   background-color: var(--color-brand-main);
-  padding: 15px 25px;
+  /* [修正点]: padding を clamp() で流動化 */
+  padding: clamp(0.5rem, 2vw, 1rem) clamp(0.75rem, 3vw, 1.5rem);
   z-index: 3;
   width: auto;
-  min-width: 200px;
+  min-width: clamp(140px, 20vw, 200px);
 }
 
 .message-name-row {
   display: flex;
   align-items: flex-end;
-  /* Align font baselines */
-  gap: 15px;
+  /* [修正点]: gap を clamp() で流動化 */
+  gap: clamp(0.5rem, 1.5vw, 1rem);
   margin-bottom: 5px;
 }
 
 .message-position {
   color: var(--color-bg-primary);
-  font-size: 24px;
+  /* [修正点]: font-size を clamp() で流動化 */
+  font-size: clamp(1rem, 2vw, 1.5rem);
   font-weight: bold;
   line-height: 1;
 }
 
 .message-name-jp {
   color: var(--color-bg-primary);
-  font-size: 27px;
-  /* Increased from 24px */
+  /* [修正点]: font-size を clamp() で流動化 */
+  font-size: clamp(1.125rem, 2.2vw, 1.6875rem);
   font-weight: bold;
   letter-spacing: var(--spacing-xxs);
   line-height: 1;
@@ -493,21 +375,21 @@ body.has-fixed-header .firstview {
 
 .message-name-en {
   color: var(--color-accent2);
-  font-size: 14px;
+  font-size: clamp(0.625rem, 1.2vw, 0.875rem);
   font-family: var(--font-en);
   letter-spacing: calc(var(--spacing-xxs) / 2);
   text-align: center;
   font-weight: bold;
 }
 
-/* Right Content */
+/* ---- Right Content ---- */
 .message-text-content {
   max-width: 560px;
-  /* prevent text from getting too wide */
 }
 
 .message-lead {
-  font-size: 24px;
+  /* [修正点]: font-size を clamp() で流動化 */
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
   font-weight: bold;
   text-align: center;
   color: var(--color-text-primary);
@@ -515,38 +397,75 @@ body.has-fixed-header .firstview {
 }
 
 .message-text {
-  font-size: 16px;
+  font-size: clamp(0.875rem, 1.3vw, 1rem);
   line-height: var(--line-height-base);
   text-align: left;
   color: var(--color-text-primary);
 }
 
+/* ---- 1024px 以下 ---- */
+/* コンテナサイズ = 60vw → はみ出し = 60vw × 0.12 = 7.2vw */
 @media (max-width: 1024px) {
   .message-body {
     flex-direction: column;
+    align-items: center;
+    gap: var(--space-l);
   }
 
-  .message-left,
-  .message-right {
-    width: 100%;
-    justify-content: center;
-    padding: 0 var(--space-m);
+  .message-text-container {
+    display: contents;
   }
 
-  .message-left {
-    margin-bottom: 60px;
-    /* Space for bg square offset */
+  .message-body .section-header {
+    order: 1;
+    text-align: center;
+    margin-bottom: 0;
   }
 
-  .message-img-container,
-  .message-bg-square {
-    width: 80vw;
-    height: 80vw;
+  .message-img-container {
+    order: 2;
+    width: 60vw;
+    height: 60vw;
     max-width: 400px;
     max-height: 400px;
+    /* はみ出し分を再計算（60vw × 12%） */
+    margin-left: 7.2vw;
+    margin-bottom: 7.2vw;
   }
 
-  /* Reset bg square position for mobile if needed, currently reusing desktop absolute positioning */
+  .message-text-content {
+    order: 3;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  /* bg-square は % 指定のため追加スタイル不要 */
+}
+
+/* [修正点]: 400px以下で name-card が院長の顔に被りすぎないよう下にずらす */
+@media (max-width: 400px) {
+  .message-name-card {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    width: 100%;
+    text-align: center;
+    margin-top: -0.5rem;
+  }
+
+  .message-name-row {
+    justify-content: center;
+  }
+
+  .message-img-container {
+    width: 80vw;
+    height: 80vw;
+    max-width: 320px;
+    max-height: 320px;
+    margin-left: 9.6vw;
+    margin-bottom: 9.6vw;
+  }
 }
 
 /* ==============================
@@ -555,55 +474,13 @@ body.has-fixed-header .firstview {
 
 .gallery {
   background-color: var(--color-bg-primary);
-  padding-top: var(--space-l);
-  padding-bottom: var(--space-l);
 }
 
-.gallery-header {
-  text-align: center;
-  margin-bottom: var(--space-l);
+.galler-slider {
+  width: 100vw;
+  height: auto;
 }
 
-.gallery-title {
-  font-size: 36px;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-xs);
-}
-
-.gallery-sub {
-  font-size: 18px;
-  font-family: var(--font-en);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-secondary);
-}
-
-.gallery-slider {
-  width: 100%;
-  padding-bottom: var(--space-l);
-  /* Optional spacing */
-}
-
-.gallery-slider .swiper-wrapper {
-  transition-timing-function: linear;
-  /* Essential for smooth continuous flow */
-}
-
-.gallery-slide {
-  width: auto;
-  /* Important for slidesPerView: 'auto' */
-  margin-right: 30px;
-  /* Spacing between slides */
-}
-
-.gallery-slide img {
-  width: 400px;
-  height: 225px;
-  object-fit: cover;
-  border-radius: 20px;
-  /* Based on reference image */
-  display: block;
-}
 
 /* ==============================
    News Section
@@ -611,8 +488,6 @@ body.has-fixed-header .firstview {
 
 .news {
   background-color: var(--color-bg-secondary);
-  padding-top: var(--space-l);
-  padding-bottom: var(--space-l);
 
   /* Wavy Mask */
   --wave-height: 40px;
@@ -637,37 +512,28 @@ body.has-fixed-header .firstview {
   /* Ensure mask composite works (default is add/source-over which is fine for opaque overlapping) */
 }
 
-.news .wrapper {
+.news-body {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  padding: 0 5%;
+  /* [修正点]: gap を clamp() で流動化 */
+  gap: clamp(1.5rem, 5vw, 5rem);
+  /* [修正点]: 狭い画面で自動折り返し */
   flex-wrap: wrap;
 }
 
-.news-header {
+.news-body .section-header {
+  width: clamp(200px, 25vw, 300px);
   text-align: center;
-  width: 300px;
+  margin-bottom: 0;
   flex-shrink: 0;
-}
-
-.news-title {
-  font-size: 36px;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-xs);
-}
-
-.news-sub {
-  font-size: 18px;
-  font-family: var(--font-en);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-secondary);
 }
 
 .news-content {
   flex: 1;
   max-width: 800px;
-  padding-left: var(--space-l);
+  min-width: 0;
 }
 
 .news-item {
@@ -699,93 +565,54 @@ body.has-fixed-header .firstview {
   color: var(--color-bg-primary);
   padding: 4px var(--space-xs);
   border-radius: var(--space-xs);
-  font-size: 14px;
+  font-size: clamp(0.75rem, 1.2vw, 0.875rem);
   line-height: 1;
   font-weight: var(--font-weight-regular);
-  /* reason-number didn't specify bold */
 }
 
 .news-text {
-  font-size: 16px;
+  font-size: clamp(0.875rem, 1.3vw, 1rem);
   line-height: var(--line-height-base);
   color: var(--color-text-primary);
 }
 
+/* [修正点]: 768px以下では flex-wrap が自動処理するため縦積みに */
 @media (max-width: 768px) {
-  .news .wrapper {
-    flex-direction: column;
-  }
-
-  .news-header {
+  .news-body .section-header {
     width: 100%;
-    margin-bottom: var(--space-l);
-    text-align: center;
-  }
-
-  .news-content {
-    padding-left: 0;
-    width: 100%;
+    margin-bottom: 0;
   }
 }
 
 /* ==============================
-   Access Section
+   Access Section（Google Mapの大きさの調整方法が分からない）
 ============================== */
 
 .access {
   background-color: var(--color-bg-primary);
-  padding-top: var(--space-l);
-  padding-bottom: var(--space-l);
 }
 
-.access-header {
-  text-align: center;
-  margin-bottom: var(--space-l);
-}
-
-.access-title {
-  font-size: 36px;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-xs);
-}
-
-.access-sub {
-  font-size: 18px;
-  font-family: var(--font-en);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-secondary);
-}
-
-.access-container {
+.access-content {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 5%;
+  /* [修正点]: gap を clamp() で流動化 */
+  gap: 0 clamp(1rem, 4vw, 3rem);
 }
 
-.access-left,
-.access-right {
-  width: 48%;
-  max-width: 600px;
-}
+/* ===================================
+   access calendar固有スタイル
+=================================== */
 
-/* Override existing calendar styles for Access section */
-.firstview-calendar.access-calendar-style {
-  position: static;
-  /* Remove absolute positioning */
-  right: auto;
-  bottom: auto;
-  width: 100%;
-  max-width: 100%;
+.access__calendar {
   background: var(--color-bg-secondary);
-  box-shadow: none;
   margin-bottom: var(--space-l);
 }
 
 .access-info p,
 .access-parking p {
-  font-size: 18px;
+  /* [修正点]: font-size を clamp() で流動化 */
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
   letter-spacing: var(--spacing-xxs);
   line-height: var(--line-height-short);
   margin-bottom: var(--space-s);
@@ -793,7 +620,8 @@ body.has-fixed-header .firstview {
 }
 
 .access-parking-title {
-  font-size: 27px;
+  /* [修正点]: font-size を clamp() で流動化 */
+  font-size: clamp(1.25rem, 2.5vw, 1.6875rem);
   color: var(--color-brand-accent);
   font-weight: bold;
   letter-spacing: var(--spacing-xxs);
@@ -802,27 +630,55 @@ body.has-fixed-header .firstview {
 }
 
 .access-parking-note {
-  font-size: 18px;
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--spacing-xxs);
 }
 
 @media (max-width: 1024px) {
-  .access-container {
+  .access-content {
     flex-direction: column;
     align-items: center;
+    gap: var(--space-l);
   }
 
-  .access-left {
-    width: 100%;
-    max-width: none;
+  .access-left,
+  .access-right {
+    display: contents;
+    /* 子要素を直接 access-content の直下として扱い、order で並べ替える */
   }
 
   .access-right iframe {
+    order: 1;
+    /* [修正点]: 地図のアスペクト比保護 */
+    width: min(60vw, 592px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    max-width: 592px;
+  }
+
+  .access__calendar {
+    order: 2;
+    /* カレンダーを2番目へ */
     width: 100%;
-    max-width: 100%;
-    height: 400px;
-    /* Reduce height for mobile */
+    max-width: 592px;
+    margin-bottom: 0;
+  }
+
+  .access-info {
+    order: 3;
+    /* 情報を3番目へ */
+    width: 100%;
+    max-width: 592px;
+    text-align: left;
+  }
+
+  .access-parking {
+    order: 4;
+    /* 駐車場を4番目へ */
+    width: 100%;
+    max-width: 592px;
+    text-align: left;
   }
 }
 
@@ -836,10 +692,19 @@ body.has-fixed-header .firstview {
   background-image: url(../images/footer-below/footer-below1.png);
   width: 100%;
   background-size: cover;
-  background-position: center;
-  padding: var(--space-l) 0;
+  /* [修正点]: 小画面でも見せたい範囲を維持する背景位置調整 */
+  background-position: center 30%;
+  padding: clamp(1.5rem, 4vw, 3rem) 0;
   text-align: center;
   color: var(--color-bg-primary);
+}
+
+.home .footer-below {
+  background-image: url(../images/footer-below/footer-below1.png);
+}
+
+.sub-page .footer-below {
+  background-image: url(../images/footer-below/footer-below-sub.png);
 }
 
 .footer-below-content {
@@ -847,7 +712,8 @@ body.has-fixed-header .firstview {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: var(--space-l);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin-top: clamp(1.5rem, 4vw, 3rem);
 }
 
 .footer-below-header {
@@ -857,7 +723,8 @@ body.has-fixed-header .firstview {
 }
 
 .footer-below-title {
-  font-size: 36px;
+  /* [修正点]: font-size を clamp() で流動化（メディアクエリ統合） */
+  font-size: clamp(1.25rem, 4vw, 2.25rem);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--spacing-xxs);
   margin-bottom: var(--space-xxs);
@@ -865,7 +732,8 @@ body.has-fixed-header .firstview {
 }
 
 .footer-below-title-sub {
-  font-size: 18px;
+  /* [修正点]: font-size を clamp() で流動化 */
+  font-size: clamp(0.8rem, 1.5vw, 1.125rem);
   letter-spacing: var(--spacing-xxs);
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
@@ -873,25 +741,29 @@ body.has-fixed-header .firstview {
 .footer-below-buttons {
   display: flex;
   justify-content: center;
-  gap: var(--space-m);
+  gap: clamp(0.75rem, 2vw, 2rem);
   flex-wrap: wrap;
+  /* [修正点]: ボタンが狭い画面で窮屈にならないよう余白確保 */
+  padding: 0 clamp(0.5rem, 3vw, 1rem);
 }
 
 .footer-below-button {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 16px 32px;
+  /* [修正点]: gap, padding を clamp() で流動化 */
+  gap: clamp(0.5rem, 1.5vw, 1rem);
+  padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2.5vw, 2rem);
   background-color: #1A6EB0;
-  /* Match brand accent */
   border: 2px solid #fff;
-  /* White border as per image */
-  min-width: 300px;
+  /* [修正点]: min-width を clamp() で流動化 */
+  min-width: clamp(220px, 35vw, 300px);
   justify-content: center;
+  /* [修正点]: ボタンが潰れないよう保護 */
+  flex-shrink: 0;
 }
 
 .button-icon {
-  font-size: 32px;
+  font-size: clamp(1.5rem, 3vw, 2rem);
 }
 
 .button-text {
@@ -902,34 +774,34 @@ body.has-fixed-header .firstview {
   line-height: 1.3;
 }
 
+.button-text::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url(../images/icon/phone_botttun.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  margin-right: var(--space-xxs);
+}
+
 .button-sub {
-  font-size: 12px;
+  font-size: clamp(0.625rem, 1vw, 0.75rem);
   letter-spacing: var(--spacing-xxs);
 }
 
 .button-main {
-  font-size: 20px;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
   font-weight: bold;
   letter-spacing: var(--spacing-xxs);
 }
 
 .footer-below-note {
-  font-size: 18px;
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
   letter-spacing: var(--spacing-xxs);
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-@media (max-width: 768px) {
-  .footer-below-title {
-    font-size: 24px;
-  }
-
-  .footer-below-title-sub {
-    font-size: 14px;
-  }
-
-  .footer-below-button {
-    width: 100%;
-    min-width: auto;
-  }
-}
+/* [修正点]: clamp() により個別メディアクエリ不要 */
