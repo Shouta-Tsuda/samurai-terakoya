@@ -8,13 +8,15 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vegas/dist/vegas.min.css">
     <link rel="stylesheet" href="common.css">
     <link rel="stylesheet" href="styles/style.css">
+    <script src="https://unpkg.com/vegas/dist/vegas.iife.min.js"></script>
 </head>
 
 <body>
     <header>
-        <div class="header__inner wrapper section">
+        <div class="header__inner wrapper">
             <h1 class="header__logo">
                 <a href="index.html" class="header-link">
                     <img src="images/icon/logo.png" alt="さわやか歯科クリニックのロゴ">
@@ -59,11 +61,9 @@
 
         </div>
     </header>
-    <!-- Slider main container -->
-    <div class="firstview swiper">
-        <!-- Additional required wrapper -->
+
+    <!-- <div class="firstview swiper">
         <div class="swiper-wrapper">
-            <!-- Slides -->
             <div class="swiper-slide">
                 <img src="images/fv/slide1.png" alt="さわやか歯科クリニックの外観">
                 <div class="firstview__content">
@@ -88,7 +88,11 @@
             </div>
         </div>
         <div class="calendar-container firstview__calendar">
-            <p class="calendar-container__title">受付時間</p>
+            <div class="calendar-title-flex">
+                <p class="calendar-container__title">受付時間</p>
+                <span class="calendar-container__note">日祝は休診です</span>
+            </div>
+
             <table>
                 <thead>
                     <tr>
@@ -99,8 +103,6 @@
                         <th>木</th>
                         <th>金</th>
                         <th>土</th>
-                        <th>日</th>
-                        <th>祝</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -112,8 +114,6 @@
                         <td>●</td>
                         <td>●</td>
                         <td>●</td>
-                        <td>×</td>
-                        <td>×</td>
                     </tr>
                     <tr>
                         <th>14:15〜18:30</th>
@@ -123,19 +123,78 @@
                         <td>●</td>
                         <td>●</td>
                         <td>×</td>
-                        <td>×</td>
-                        <td>×</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-    </div>
+    </div> -->
 
-    <section class="firstview-bottom">
-        <p class="firstview-bottom_text">当日のお電話予約も受付中！急な痛みもご相談ください<br>受付時間：平日 8:45〜13:15 / 14:15〜18:30 ・ 土曜 8:45〜13:15
-        </p>
-        <a href="#" class="button-reservation">今すぐ電話</a>
-    </section>
+    <!-- ヒーローイメージ用コード -->
+    <div class="hero__text__box">
+        <div class="firstview-parent__content" id="hero-text">
+            <div class="hero__text hero__text1">
+                <p>地下鉄南北線ひかりが丘駅から徒歩5分</p>
+                <p>外から雰囲気がわかる、通いやすい歯医者です</p>
+            </div>
+            <div class="hero__text hero__text2">
+                <p>光が差し込む開放的な待合スペース</p>
+                <p>お子さま連れでも安心して通院できます</p>
+            </div>
+            <div class="hero__text hero__text3">
+                <p>必要以上の治療はしない</p>
+                <p>今の状態と選択肢を丁寧にお伝えします</p>
+            </div>
+        </div>
+        <div class="firstview-parent" id="hero-vegas">
+            <div class="calendar-container firstview-parent__calendar">
+                <div class="calendar-title-flex">
+                    <p class="calendar-container__title">受付時間</p>
+                    <span class="calendar-container__note">日祝は休診です</span>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>月</th>
+                            <th>火</th>
+                            <th>水</th>
+                            <th>木</th>
+                            <th>金</th>
+                            <th>土</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>8:45〜13:15</th>
+                            <td>●</td>
+                            <td>●</td>
+                            <td>●</td>
+                            <td>●</td>
+                            <td>●</td>
+                            <td>●</td>
+                        </tr>
+                        <tr>
+                            <th>14:15〜18:30</th>
+                            <td>●</td>
+                            <td>●</td>
+                            <td>●</td>
+                            <td>●</td>
+                            <td>●</td>
+                            <td>×</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="firstview-parent-bottom">
+                <p class="firstview-parent-bottom_text">
+                    当日のお電話予約も受付中！急な痛みもご相談ください<br>
+                    受付時間：平日 8:45〜13:15 / 14:15〜18:30 ・ 土曜 8:45〜13:15
+                </p>
+                <a href="#" class="button-reservation">今すぐ電話</a>
+                <a href="#" class="button-reservation button-web-mobile">かんたんWEB予約</a>
+            </div>
+        </div>
+    </div>
 
     <section class="reason section">
         <div class="wrapper">
@@ -226,7 +285,41 @@
             </div>
 
             <div class="treatment-content">
-
+                <a href="treatment.html" class="treatment-card treatment-card--text-secondary">
+                    <h3 class="treatment-card__title">歯が痛い</h3>
+                    <div class="treatment-card__image-placeholder"></div>
+                    <div class="treatment-card__arrow-wrapper">
+                        <span class="treatment-card__arrow"></span>
+                    </div>
+                </a>
+                <a href="treatment.html" class="treatment-card treatment-card--brand-main">
+                    <h3 class="treatment-card__title">歯が痛い</h3>
+                    <div class="treatment-card__image-placeholder"></div>
+                    <div class="treatment-card__arrow-wrapper">
+                        <span class="treatment-card__arrow"></span>
+                    </div>
+                </a>
+                <a href="treatment.html" class="treatment-card treatment-card--accent1">
+                    <h3 class="treatment-card__title">歯が痛い</h3>
+                    <div class="treatment-card__image-placeholder"></div>
+                    <div class="treatment-card__arrow-wrapper">
+                        <span class="treatment-card__arrow"></span>
+                    </div>
+                </a>
+                <a href="treatment.html" class="treatment-card treatment-card--brand-accent">
+                    <h3 class="treatment-card__title">歯が痛い</h3>
+                    <div class="treatment-card__image-placeholder"></div>
+                    <div class="treatment-card__arrow-wrapper">
+                        <span class="treatment-card__arrow"></span>
+                    </div>
+                </a>
+                <a href="treatment.html" class="treatment-card treatment-card--accent2">
+                    <h3 class="treatment-card__title">歯が痛い</h3>
+                    <div class="treatment-card__image-placeholder"></div>
+                    <div class="treatment-card__arrow-wrapper">
+                        <span class="treatment-card__arrow"></span>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -234,12 +327,38 @@
     <section class="section flow">
         <div class="wrapper">
             <div class="section-header">
-                <h2 class="section-title">治療の流れ</h2>
+                <h2 class="section-title">初めての方へ 治療の流れ</h2>
                 <p class="section-title-english">Flow</p>
             </div>
 
             <div class="flow-content">
-
+                <div class="flow-step">
+                    <div class="flow-circle">
+                        <span class="flow-circle__number">1</span>
+                        <span class="flow-circle__text">予約</span>
+                    </div>
+                    <a href="first.html" class="flow-link">
+                        詳しく見る<span class="flow-link__icon"></span>
+                    </a>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-circle">
+                        <span class="flow-circle__number">2</span>
+                        <span class="flow-circle__text">来院・カウンセリング</span>
+                    </div>
+                    <a href="first.html" class="flow-link">
+                        詳しく見る<span class="flow-link__icon"></span>
+                    </a>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-circle">
+                        <span class="flow-circle__number">3</span>
+                        <span class="flow-circle__text">検査・治療</span>
+                    </div>
+                    <a href="first.html" class="flow-link">
+                        詳しく見る<span class="flow-link__icon"></span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -319,7 +438,8 @@
     </section>
 
     <section class="section news">
-        <div class="wrapper news-body">
+        <div class="wave-top"></div>
+        <div class="news-body bc-blue">
             <div class="section-header">
                 <h2 class="section-title">お知らせ</h2>
                 <p class="section-title-english">News</p>
@@ -351,6 +471,7 @@
                 </article>
             </div>
         </div>
+        <div class="wave-bottom"></div>
     </section>
 
     <section class="section access">
@@ -361,7 +482,14 @@
             </div>
 
             <div class="access-content">
-                <div class="access-left">
+                <div class="access-map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1965.3398866790944!2d141.4643151699238!3d43.03153965316751!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2b6752fe9497%3A0x6c3612ebe1c3c853!2z44GX44Gu44GQ44Gh44GT44Gp44KC5q2v56eR44GN44KH44GG44Gb44GE5q2v56eR!5e0!3m2!1sja!2sjp!4v1771462242428!5m2!1sja!2sjp"
+                        width="592" height="592" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="access-info-container">
                     <div class="calendar-container access__calendar">
                         <p class="calendar-container__title">受付時間</p>
                         <table>
@@ -374,8 +502,6 @@
                                     <th>木</th>
                                     <th>金</th>
                                     <th>土</th>
-                                    <th>日</th>
-                                    <th>祝</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -387,8 +513,6 @@
                                     <td>●</td>
                                     <td>●</td>
                                     <td>●</td>
-                                    <td>×</td>
-                                    <td>×</td>
                                 </tr>
                                 <tr>
                                     <th>14:15〜18:30</th>
@@ -397,12 +521,11 @@
                                     <td>●</td>
                                     <td>●</td>
                                     <td>●</td>
-                                    <td>×</td>
-                                    <td>×</td>
-                                    <td>×</td>
+                                    <td>●</td>
                                 </tr>
                             </tbody>
                         </table>
+                        <p class="calendar-container__footer-note">日祝は休診です</p>
                     </div>
 
                     <div class="access-info">
@@ -417,13 +540,6 @@
                         <p>📍 札幌市厚別区厚別中央2条1丁目4-20 森川パーキング</p>
                         <p class="access-parking-note">スーパーアークスさんや近隣道路にお停めにならないようお願いいたします</p>
                     </div>
-                </div>
-
-                <div class="access-right">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1965.3398866790944!2d141.4643151699238!3d43.03153965316751!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2b6752fe9497%3A0x6c3612ebe1c3c853!2z44GX44Gu44GQ44Gh44GT44Gp44KC5q2v56eR44GN44KH44GG44Gb44GE5q2v56eR!5e0!3m2!1sja!2sjp!4v1771462242428!5m2!1sja!2sjp"
-                        width="592" height="592" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -477,12 +593,12 @@
                 </a>
             </h1>
 
-            <div class="footer-content">
+            <address class="footer-content">
                 <p>〒003-0236 札幌市厚別区厚別中央2条1丁目4-18 第29森川ビル1F</p>
                 <p>TEL 011-123-456</p>
                 <p>受付時間:平日 8:45〜13:15 / 14:15〜18:30 ・ 土曜 8:45〜13:15</p>
                 <p>休診日:日曜、祝日</p>
-            </div>
+            </address>
 
             <div class="icon">
                 <ul class="icon-list">
@@ -509,7 +625,9 @@
             <small>&copy;Copyright 2026 さわやか歯科クリニック All rights reserved.</small>
         </p>
     </footer>
+
     <script src="js/main.js"></script>
+
 </body>
 
 </html>
