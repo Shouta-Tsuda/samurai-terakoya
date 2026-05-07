@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>さわやか歯科クリニック</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vegas/dist/vegas.min.css">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://unpkg.com/vegas/dist/vegas.iife.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header__inner wrapper">
+            <h1 class="header__logo">
+                <a href="index.html" class="header-link">
+                    <img src="images/icon/logo.png" alt="さわやか歯科クリニックのロゴ">
+                </a>
+            </h1>
+
+            <div class="header__menu">
+                <nav class="header__nav">
+                    <ul class="header__nav_list">
+                        <li class="header__nav_item">
+                            <a href="index.html" class="header__nav-link">ホーム</a>
+                        </li>
+                        <li class="header__nav_item">
+                            <a href="treatment.html" class="header__nav-link">診療案内</a>
+                        </li>
+                        <li class="header__nav_item">
+                            <a href="first.html" class="header__nav-link">初めての方へ</a>
+                        </li>
+                        <li class="header__nav_item">
+                            <a href="about.html" class="header__nav-link">当院について</a>
+                        </li>
+                        <li class="header__nav_item">
+                            <a href="vision.html" class="header__nav-link">診療方針</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="header__cta">
+                    <a href="#" class="button-reservation">
+                        かんたんWEB予約
+                    </a>
+                    <!-- ボタンのクラス名はサイト全体で統一 -->
+
+                    <div class="header__tel">011-123-456</div>
+                </div>
+            </div>
+
+            <!--1024px以下でナビを開閉するハンバーガーボタン -->
+            <button class="hamburger" type="button" aria-label="メニュー" aria-expanded="false">
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+            </button>
+
+        </div>
+    </header>
+
+    <div class="firstview-child">
+        <img src="images/fv/vision-slide.png" alt="さわやか歯科クリニックのスタッフとお客様">
+        <!-- 画像サイズを1200*400に変更 -->
+        <div class="firstview-child__content">
+            <p>治療方針</p>
+            <p>必要な治療を、必要な分だけ</p>
+        </div>
+    </div>
+
+    <section class="section vision-first">
+
+        <div class="wrapper vision-first-body">
+            <div class="section-header">
+                <h2 class="section-title">治療を始める前に、必ずお話します</h2>
+                <p class="section-title-english">Vision Concept</p>
+            </div>
+
+            <div class="vision-first-container">
+                <img src="images/gallery/vision_staff.png" alt="さわやか歯科クリニックスタッフ一同" class="vision-first-container-img">
+                <p class="vision-first-container-text">
+                    当院では、すぐに治療を始めるのではなく、まずはしっかりとお話をする時間を大切にしています。患者さまのお悩みや不安に寄り添い、一緒に最適な治療を考えていきます。<br>
+                    すぐに歯を削らない、無理に進めない、選択肢をきちんと伝える。患者さまとの対話を通じ、信頼関係を築くことを第一に考えています。
+                </p>
+            </div>
+
+            <div class="vision-first-cards">
+                <div class="vision-first-card">
+                    <div class="vision-first-card__head">
+                        <span class="vision-first-card__number">方針その1</span>
+                        <h3>説明を重視</h3>
+                    </div>
+                    <p class="vision-first-card__text">
+                        検査結果や治療の必要性について、わかりやすく丁寧にご説明します。<br>なるべく専門用語は使わず、ご理解いただけるまでお話しします。</p>
+                </div>
+
+                <div class="vision-first-card">
+                    <div class="vision-first-card__head">
+                        <span class="vision-first-card__number">方針その2</span>
+                        <h3>選択は患者さんと一緒に</h3>
+                    </div>
+                    <p class="vision-first-card__text">複数の治療方法がある場合、それぞれのメリット・デメリットをお伝えします。<br>患者さまご自身で納得して選んでいただきます。
+                    </p>
+                </div>
+
+                <div class="vision-first-card">
+                    <div class="vision-first-card__head">
+                        <span class="vision-first-card__number">方針その3</span>
+                        <h3>経過観察も治療の一つ</h3>
+                    </div>
+                    <p class="vision-first-card__text">すぐに治療が必要ない場合、経過を見守ることも大切な選択肢です。<br>定期的に確認しながら、適切なタイミングを一緒に考えます。
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section vision-second">
+
+        <div class="wrapper vision-second-body">
+            <div class="section-header">
+                <h2 class="section-title">「必要以上の治療をしない」ための取り組み</h2>
+                <p class="section-title-english">Vision Concept</p>
+            </div>
+
+            <h3 class="sub-text">
+                当院では、患者さまにとって本当に必要な治療だけをご提案するため、以下の取り組みを行っています。
+            </h3>
+
+            <div class="vision-second-container">
+                <dl class="vision-second-cards">
+                    <div class="vision-second-card">
+                        <dt class="vision-second-card__head">初診時の丁寧なカウンセリング</dt>
+                        <dd class="vision-second-card__text">お悩みや不安、治療への希望をじっくりお聞きします。</dd>
+                    </div>
+                    <div class="vision-second-card">
+                        <dt class="vision-second-card__head">治療計画の事前説明</dt>
+                        <dd class="vision-second-card__text">何をするのか、なぜ必要なのかを明確にお伝えします。</dd>
+                    </div>
+                    <div class="vision-second-card">
+                        <dt class="vision-second-card__head">検査結果の共有</dt>
+                        <dd class="vision-second-card__text">レントゲンや口腔内写真を一緒に見ながら、現状をご説明します。</dd>
+                    </div>
+                    <div class="vision-second-card">
+                        <dt class="vision-second-card__head">「今すぐ治療しない」選択肢の提示</dt>
+                        <dd class="vision-second-card__text">急を要さない場合、経過観察という選択もご提案します。</dd>
+                    </div>
+                    <div class="vision-second-card">
+                        <dt class="vision-second-card__head">費用・期間の事前相談</dt>
+                        <dd class="vision-second-card__text">治療にかかる費用や通院回数の目安を、事前にお伝えします。</dd>
+                    </div>
+                </dl>
+                <!-- 画面左の説明量に対して、画面右の写真の枚数が1枚だとバランス悪い⇒2枚に増やして834px以下の場合は1枚にする -->
+                <img src="images/gallery/vision_staff.png" alt="さわやか歯科クリニックスタッフ一同" class="vision-second-container-img">
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section vision-third">
+
+        <div class="wrapper vision-third-body">
+            <div class="section-header">
+                <h2 class="section-title">カウンセリングと治療の進め方</h2>
+                <p class="section-title-english">Vision Concept</p>
+            </div>
+
+            <h3 class="sub-text">
+                分からないまま進まない。納得してから次へ進む。そのための流れをご説明します。
+            </h3>
+
+            <ol class="vision-third-cards">
+                <li class="box-raduis vision-third-card">
+                    <div class="vision-third-card__head">
+                        <span class="vision-third-card__number">1</span>
+                        <h4 class="vision-third-card__title">相談・ヒアリング</h4>
+                    </div>
+                    <p class="vision-third-card__text">まずは、お悩みや気になることをお聞かせください。どんな小さなことでも構いません。</p>
+                </li>
+                <li class="box-raduis vision-third-card">
+                    <div class="vision-third-card__head">
+                        <span class="vision-third-card__number">2</span>
+                        <h4 class="vision-third-card__title">検査・説明</h4>
+                    </div>
+                    <p class="vision-third-card__text">必要な検査を行い、お口の中の状態を詳しくご説明します。画像を見ながら分かりやすくお伝えします。</p>
+                </li>
+                <li class="box-raduis vision-third-card">
+                    <div class="vision-third-card__head">
+                        <span class="vision-third-card__number">3</span>
+                        <h4 class="vision-third-card__title">治療方針の共有</h4>
+                    </div>
+                    <p class="vision-third-card__text">考えられる治療方法をいくつかご提案し、それぞれのメリット・デメリット、費用や期間をお伝えします。</p>
+                </li>
+                <li class="box-raduis vision-third-card">
+                    <div class="vision-third-card__head">
+                        <span class="vision-third-card__number">4</span>
+                        <h4 class="vision-third-card__title">納得後に治療開始</h4>
+                    </div>
+                    <p class="vision-third-card__text">患者さまがご納得され、ご了承いただいてから治療を始めます。急いで決める必要はありません。</p>
+                </li>
+            </ol>
+
+            <p class="note">
+                治療の途中でも、疑問や不安があればいつでもお伝えください。<br>分からないまま進めることはありません。
+            </p>
+
+        </div>
+    </section>
+
+    <section class="section vision-question">
+
+        <div class="wrapper vision-question-body">
+            <div class="section-header">
+                <h2 class="section-title">よくある不安や疑問</h2>
+                <p class="section-title-english">Vision Concept</p>
+            </div>
+
+            <h3 class="sub-text">
+                遠慮なく、何でもお聞きください。患者さまの不安や疑問にしっかりとお答えします。
+            </h3>
+
+            <div class="vision-question-container">
+                <dl class="vision-question-cards">
+                    <div class="vision-question-card">
+                        <dt class="vision-question-card__head">本当にこの治療は必要なのでしょうか？</dt>
+                        <dd class="vision-question-card__text">
+                            なぜその治療が必要なのか、放置するとどうなるのか、今すぐ必要なのかなど、丁寧にご説明します。<br>セカンドオピニオンを希望される場合もご遠慮なくお申し出ください。</dd>
+                    </div>
+                    <div class="vision-question-card">
+                        <dt class="vision-question-card__head">治療期間はどれくらいかかりますか？</dt>
+                        <dd class="vision-question-card__text">
+                            治療内容や範囲によって異なりますが、事前にしっかりとご説明します。<br>通院回数の目安などもお伝えしますので、ご安心ください。</dd>
+                    </div>
+                    <div class="vision-question-card">
+                        <dt class="vision-question-card__head">痛みはありますか？</dt>
+                        <dd class="vision-question-card__text">
+                            治療内容や範囲によって異なりますが、事前にしっかりとご説明します。<br>通院回数の目安などもお伝えしますので、ご安心ください。</dd>
+                    </div>
+                </dl>
+
+                <p class="note">
+                    その他にも、どんなことでもお気軽にご相談ください。<br>「こんなこと聞いてもいいのかな」と思うことこそ、お話しください。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <section class="section footer-below footer-below-vision">
+            <div class="footer-below-header">
+                <div class="wrapper">
+                    <!-- テキストの条件分岐
+                         トップページ: お口のお悩み、お気軽にご相談ください
+                         子ページ: タイトルが入ります（仮）
+                    -->
+                    <h2 class="footer-below-title">
+                        <?php echo $footer_below_title ?? 'お口のお悩み、お気軽にご相談ください'; ?>
+                    </h2>
+                    <p class="footer-below-title-sub">
+                        <?php echo $footer_below_title_sub ?? '初めての方も安心してご来院いただけます'; ?>
+                    </p>
+                </div>
+            </div>
+
+            <div class="wrapper">
+                <div class="footer-below-content">
+                    <div class="footer-below-buttons">
+                        <a href="#" class="button-reservation footer-below-button">
+                            <div class="button-text">
+                                <span class="button-sub">24時間受付</span>
+                                <span class="button-main">WEB予約</span>
+                            </div>
+                        </a>
+                        <a href="tel:011-123-456" class="button-reservation footer-below-button">
+                            <div class="button-text">
+                                <span class="button-sub">平日18:30・土曜13:15まで</span>
+                                <span class="button-main">011-123-456</span>
+                            </div>
+                        </a>
+                    </div>
+                    <p class="footer-below-note">
+                        <?php echo $footer_below_note ?? '※急患の方は診療時間内にお電話でご連絡ください'; ?>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer-inner wrapper">
+            <h1 class="footer-logo">
+                <a href="index.html" class="footer-link">
+                    <img src="images/icon/logo.png" alt="さわやか歯科クリニックのロゴ">
+                </a>
+            </h1>
+
+            <address class="footer-content">
+                <p>〒003-0236 札幌市厚別区厚別中央2条1丁目4-18 第29森川ビル1F</p>
+                <p>TEL 011-123-456</p>
+                <p>受付時間:平日 8:45〜13:15 / 14:15〜18:30 ・ 土曜 8:45〜13:15</p>
+                <p>休診日:日曜、祝日</p>
+            </address>
+
+            <div class="icon">
+                <ul class="icon-list">
+                    <li class="icon-item">
+                        <a href="" class="icon-link">
+                            <img src="images/icon/X-logo.png" alt="Xのアイコン">
+                        </a>
+                    </li>
+                    <li class="icon-item">
+                        <a href="" class="icon-link">
+                            <img src="images/icon/Instagram-logo.png" alt="instagramのアイコン">
+                        </a>
+                    </li>
+                    <li class="icon-item">
+                        <a href="" class="icon-link">
+                            <img src="images/icon/Facebook-logo.png" alt="facebookのアイコン">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="footer-copy">
+            <small>&copy;Copyright 2026 さわやか歯科クリニック All rights reserved.</small>
+        </p>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

@@ -23,41 +23,43 @@
                 </a>
             </h1>
 
-            <!-- [修正点]: 900px以下でナビを開閉するハンバーガーボタン -->
+            <div class="header__menu">
+                <nav class="header__nav">
+                    <ul class="header__nav_list">
+                        <li class="header__nav_item">
+                            <a href="index.html" class="header__nav-link">ホーム</a>
+                        </li>
+                        <li class="header__nav_item">
+                            <a href="treatment.html" class="header__nav-link">診療案内</a>
+                        </li>
+                        <li class="header__nav_item">
+                            <a href="first.html" class="header__nav-link">初めての方へ</a>
+                        </li>
+                        <li class="header__nav_item">
+                            <a href="about.html" class="header__nav-link">当院について</a>
+                        </li>
+                        <li class="header__nav_item">
+                            <a href="vision.html" class="header__nav-link">診療方針</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="header__cta">
+                    <a href="#" class="button-reservation">
+                        かんたんWEB予約
+                    </a>
+                    <!-- ボタンのクラス名はサイト全体で統一 -->
+
+                    <div class="header__tel">011-123-456</div>
+                </div>
+            </div>
+
+            <!--1024px以下でナビを開閉するハンバーガーボタン -->
             <button class="hamburger" type="button" aria-label="メニュー" aria-expanded="false">
                 <span class="hamburger__line"></span>
                 <span class="hamburger__line"></span>
                 <span class="hamburger__line"></span>
             </button>
-
-            <nav class="header__nav">
-                <ul class="header__nav_list">
-                    <li class="header__nav_item">
-                        <a href="index.html" class="header__nav-link">ホーム</a>
-                    </li>
-                    <li class="header__nav_item">
-                        <a href="treatment.html" class="header__nav-link">診療案内</a>
-                    </li>
-                    <li class="header__nav_item">
-                        <a href="first.html" class="header__nav-link">初めての方へ</a>
-                    </li>
-                    <li class="header__nav_item">
-                        <a href="about.html" class="header__nav-link">当院について</a>
-                    </li>
-                    <li class="header__nav_item">
-                        <a href="vision.html" class="header__nav-link">診療方針</a>
-                    </li>
-                </ul>
-            </nav>
-
-            <div class="header__cta">
-                <a href="#" class="button-reservation">
-                    かんたんWEB予約
-                </a>
-                <!-- ボタンのクラス名はサイト全体で統一 -->
-
-                <div class="header__tel">011-123-456</div>
-            </div>
 
         </div>
     </header>
@@ -201,7 +203,7 @@
 
             <div class="section-header">
                 <h2 class="section-title">当院が選ばれる理由</h2>
-                <p class="section-title-english">Why Our Clinic is Chosen</p>
+                <p class="section-title-english">why Our Clinic is Chosen</p>
             </div>
 
             <div class="reason-content">
@@ -285,36 +287,36 @@
             </div>
 
             <div class="treatment-content">
-                <a href="treatment.html" class="treatment-card treatment-card--text-secondary">
+                <a href="treatment.html" class="treatment-card">
                     <h3 class="treatment-card__title">歯が痛い</h3>
                     <div class="treatment-card__image-placeholder"></div>
                     <div class="treatment-card__arrow-wrapper">
                         <span class="treatment-card__arrow"></span>
                     </div>
                 </a>
-                <a href="treatment.html" class="treatment-card treatment-card--brand-main">
-                    <h3 class="treatment-card__title">歯が痛い</h3>
+                <a href="treatment.html" class="treatment-card">
+                    <h3 class="treatment-card__title">歯ぐきがしみる</h3>
                     <div class="treatment-card__image-placeholder"></div>
                     <div class="treatment-card__arrow-wrapper">
                         <span class="treatment-card__arrow"></span>
                     </div>
                 </a>
-                <a href="treatment.html" class="treatment-card treatment-card--accent1">
-                    <h3 class="treatment-card__title">歯が痛い</h3>
+                <a href="treatment.html" class="treatment-card">
+                    <h3 class="treatment-card__title">歯が折れた</h3>
                     <div class="treatment-card__image-placeholder"></div>
                     <div class="treatment-card__arrow-wrapper">
                         <span class="treatment-card__arrow"></span>
                     </div>
                 </a>
-                <a href="treatment.html" class="treatment-card treatment-card--brand-accent">
-                    <h3 class="treatment-card__title">歯が痛い</h3>
+                <a href="treatment.html" class="treatment-card">
+                    <h3 class="treatment-card__title">歯が黄色いのが気になる</h3>
                     <div class="treatment-card__image-placeholder"></div>
                     <div class="treatment-card__arrow-wrapper">
                         <span class="treatment-card__arrow"></span>
                     </div>
                 </a>
-                <a href="treatment.html" class="treatment-card treatment-card--accent2">
-                    <h3 class="treatment-card__title">歯が痛い</h3>
+                <a href="treatment.html" class="treatment-card">
+                    <h3 class="treatment-card__title">歯が抜けた</h3>
                     <div class="treatment-card__image-placeholder"></div>
                     <div class="treatment-card__arrow-wrapper">
                         <span class="treatment-card__arrow"></span>
@@ -334,29 +336,31 @@
             <div class="flow-content">
                 <div class="flow-step">
                     <div class="flow-circle">
-                        <span class="flow-circle__number">1</span>
-                        <span class="flow-circle__text">予約</span>
+                        <p class="flow-circle__number">1</p>
+                        <p class="flow-circle__text">予約</p>
+                    </div>
+                    <p style="text-align: center">
+                        <a href="first.html" class="flow-link">
+                            詳しく見る<p class="flow-link__icon"></p>
+                        </a>
+                    </p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-circle">
+                        <p class="flow-circle__number">2</p>
+                        <p class="flow-circle__text">来院・カウンセリング</p>
                     </div>
                     <a href="first.html" class="flow-link">
-                        詳しく見る<span class="flow-link__icon"></span>
+                        詳しく見る<p class="flow-link__icon"></p>
                     </a>
                 </div>
                 <div class="flow-step">
                     <div class="flow-circle">
-                        <span class="flow-circle__number">2</span>
-                        <span class="flow-circle__text">来院・カウンセリング</span>
+                        <p class="flow-circle__number">3</p>
+                        <p class="flow-circle__text">検査・治療</p>
                     </div>
                     <a href="first.html" class="flow-link">
-                        詳しく見る<span class="flow-link__icon"></span>
-                    </a>
-                </div>
-                <div class="flow-step">
-                    <div class="flow-circle">
-                        <span class="flow-circle__number">3</span>
-                        <span class="flow-circle__text">検査・治療</span>
-                    </div>
-                    <a href="first.html" class="flow-link">
-                        詳しく見る<span class="flow-link__icon"></span>
+                        詳しく見る<p class="flow-link__icon"></p>
                     </a>
                 </div>
             </div>
@@ -439,36 +443,38 @@
 
     <section class="section news">
         <div class="wave-top"></div>
-        <div class="news-body bc-blue">
-            <div class="section-header">
-                <h2 class="section-title">お知らせ</h2>
-                <p class="section-title-english">News</p>
-            </div>
+        <div class="news-bg">
+            <div class="wrapper news-body bc-blue">
+                <div class="section-header">
+                    <h2 class="section-title">お知らせ</h2>
+                    <p class="section-title-english">News</p>
+                </div>
 
-            <div class="news-content">
-                <article class="news-item">
-                    <div class="news-meta">
-                        <time class="news-date" datetime="2026-01-21">2026年1月21日(金)</time>
-                        <h3 class="news-category">休診</h3>
-                    </div>
-                    <p class="news-text">2月4日(月)は休診とさせていただきます。<br>ご迷惑おかけしますが、よろしくお願いいたします。</p>
-                </article>
+                <div class="news-content">
+                    <article class="news-item">
+                        <div class="news-meta">
+                            <time class="news-date" datetime="2026-01-21">2026年1月21日(金)</time>
+                            <h3 class="news-category">休診</h3>
+                        </div>
+                        <p class="news-text">2月4日(月)は休診とさせていただきます。<br>ご迷惑おかけしますが、よろしくお願いいたします。</p>
+                    </article>
 
-                <article class="news-item">
-                    <div class="news-meta">
-                        <time class="news-date" datetime="2026-01-17">2026年1月17日(月)</time>
-                        <h3 class="news-category">診療時間変更</h3>
-                    </div>
-                    <p class="news-text">2月1日(金)は受付時間を17:00までとさせていただきます。<br>よろしくお願いいたします。</p>
-                </article>
+                    <article class="news-item">
+                        <div class="news-meta">
+                            <time class="news-date" datetime="2026-01-17">2026年1月17日(月)</time>
+                            <h3 class="news-category">診療時間変更</h3>
+                        </div>
+                        <p class="news-text">2月1日(金)は受付時間を17:00までとさせていただきます。<br>よろしくお願いいたします。</p>
+                    </article>
 
-                <article class="news-item">
-                    <div class="news-meta">
-                        <time class="news-date" datetime="2026-01-17">2026年1月17日(月)</time>
-                        <h3 class="news-category">診療時間変更</h3>
-                    </div>
-                    <p class="news-text">2月1日(金)は受付時間を17:00までとさせていただきます。<br>よろしくお願いいたします。</p>
-                </article>
+                    <article class="news-item">
+                        <div class="news-meta">
+                            <time class="news-date" datetime="2026-01-17">2026年1月17日(月)</time>
+                            <h3 class="news-category">診療時間変更</h3>
+                        </div>
+                        <p class="news-text">2月1日(金)は受付時間を17:00までとさせていただきます。<br>よろしくお願いいたします。</p>
+                    </article>
+                </div>
             </div>
         </div>
         <div class="wave-bottom"></div>
@@ -546,7 +552,7 @@
     </section>
 
     <footer>
-        <section class="section footer-below">
+        <section class="section footer-below footer-below-index">
             <div class="footer-below-header">
                 <div class="wrapper">
                     <!-- テキストの条件分岐
@@ -554,10 +560,10 @@
                          子ページ: タイトルが入ります（仮）
                     -->
                     <h2 class="footer-below-title">
-                        <?php echo $footer_below_title ?? 'お口のお悩み、お気軽にご相談ください'; ?>
+                        お口のお悩み、お気軽にご相談ください
                     </h2>
                     <p class="footer-below-title-sub">
-                        <?php echo $footer_below_title_sub ?? '初めての方も安心してご来院いただけます'; ?>
+                        初めての方も安心してご来院いただけます
                     </p>
                 </div>
             </div>
@@ -566,7 +572,6 @@
                 <div class="footer-below-content">
                     <div class="footer-below-buttons">
                         <a href="#" class="button-reservation footer-below-button">
-                            <span class="button-icon">📱</span>
                             <div class="button-text">
                                 <span class="button-sub">24時間受付</span>
                                 <span class="button-main">WEB予約</span>
@@ -580,7 +585,7 @@
                         </a>
                     </div>
                     <p class="footer-below-note">
-                        <?php echo $footer_below_note ?? '※急患の方は診療時間内にお電話でご連絡ください'; ?>
+                        ※急患の方は診療時間内にお電話でご連絡ください
                     </p>
                 </div>
             </div>
@@ -604,17 +609,17 @@
                 <ul class="icon-list">
                     <li class="icon-item">
                         <a href="" class="icon-link">
-                            <img src="images/icon/logo-black.png" alt="Xのアイコン">
+                            <img src="images/icon/X-logo.png" alt="Xのアイコン">
                         </a>
                     </li>
                     <li class="icon-item">
                         <a href="" class="icon-link">
-                            <img src="images/icon/Instagram_Glyph_Gradient.png" alt="instagramのアイコン">
+                            <img src="images/icon/Instagram-logo.png" alt="instagramのアイコン">
                         </a>
                     </li>
                     <li class="icon-item">
                         <a href="" class="icon-link">
-                            <img src="images/icon/Facebook_Logo_Primary.png" alt="facebookのアイコン">
+                            <img src="images/icon/Facebook-logo.png" alt="facebookのアイコン">
                         </a>
                     </li>
                 </ul>

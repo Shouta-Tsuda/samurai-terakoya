@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>さわやか歯科クリニック</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vegas/dist/vegas.min.css">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://unpkg.com/vegas/dist/vegas.iife.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header__inner wrapper">
+            <h1 class="header__logo">
+                <a href="index.html" class="header-link">
+                    <img src="images/icon/logo.png" alt="さわやか歯科クリニックのロゴ">
+                </a>
+            </h1>
+
+            <div class="header__menu">
+                <nav class="header__nav">
+                    <ul class="header__nav_list">
+                        <li class="header__nav_item">
+                            <a href="index.html" class="header__nav-link">ホーム</a>
+                        </li>
+                        <li class="header__nav_item">
+                            <a href="treatment.html" class="header__nav-link">診療案内</a>
+                        </li>
+                        <li class="header__nav_item">
+                            <a href="first.html" class="header__nav-link">初めての方へ</a>
+                        </li>
+                        <li class="header__nav_item">
+                            <a href="about.html" class="header__nav-link">当院について</a>
+                        </li>
+                        <li class="header__nav_item">
+                            <a href="vision.html" class="header__nav-link">診療方針</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="header__cta">
+                    <a href="#" class="button-reservation">
+                        かんたんWEB予約
+                    </a>
+                    <!-- ボタンのクラス名はサイト全体で統一 -->
+
+                    <div class="header__tel">011-123-456</div>
+                </div>
+            </div>
+
+            <!--1024px以下でナビを開閉するハンバーガーボタン -->
+            <button class="hamburger" type="button" aria-label="メニュー" aria-expanded="false">
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+            </button>
+
+        </div>
+    </header>
+
+    <div class="firstview-child">
+        <img src="images/fv/first-slide.jpg" alt="さわやか歯科クリニックのスタッフとお客様">
+        <!-- 画像サイズを1200*400に変更 -->
+        <div class="firstview-child__content">
+            <p>診療案内</p>
+            <p>お悩みに合わせて、無理のない治療を</p>
+        </div>
+    </div>
+
+    <section class="section treatment-first">
+
+        <div class="wrapper treatment-first-body">
+            <div class="section-header">
+                <h2 class="section-title">当院の診療案内の見方</h2>
+                <p class="section-title-english">How to Read Our Treatment Guide</p>
+            </div>
+
+            <div class="treatment-first-container">
+                <img src="images/gallery/vision_staff.png" alt="さわやか歯科クリニックスタッフ一同"
+                    class="treatment-first-container-img">
+                <div class="treatment-first-container-content">
+                    <dt class="treatment-first-container-head">治療内容も、選択肢としてご説明します</dt>
+                    <dd class="treatment-first-container-text">
+                        当院では、症状があるからといって、すぐに治療を始めるとは限りません。現在の状態と選択肢を整理し、納得したうえで進めていきます。<br>
+                    </dd>
+                    <div class="treatment-first-container-text-subs">
+                        <div class="treatment-first-container-text-sub">全ての治療は「必要性」と「選択肢」から説明します。</div>
+                        <div class="treatment-first-container-text-sub">治療しない選択肢も含めてお伝えします。</div>
+                        <div class="treatment-first-container-text-sub">症状・ご希望により内容は変わります。</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section treatment-question">
+        <div class="wrapper treatment-question-body">
+            <div class="section-header">
+                <h2 class="section-title">どんなお悩みですか？</h2>
+                <p class="section-title-english">What is your concern?</p>
+            </div>
+
+            <p class="sub-text">
+                あてはまるものをお選びください。
+            </p>
+
+            <div class="treatment-content">
+                <a href="treatment.html" class="treatment-card">
+                    <h3 class="treatment-card__title">歯が痛い</h3>
+                    <div class="treatment-card__image-placeholder"></div>
+                    <div class="treatment-card__arrow-wrapper">
+                        <span class="treatment-card__arrow"></span>
+                    </div>
+                </a>
+                <a href="treatment.html" class="treatment-card">
+                    <h3 class="treatment-card__title">歯ぐきがしみる</h3>
+                    <div class="treatment-card__image-placeholder"></div>
+                    <div class="treatment-card__arrow-wrapper">
+                        <span class="treatment-card__arrow"></span>
+                    </div>
+                </a>
+                <a href="treatment.html" class="treatment-card">
+                    <h3 class="treatment-card__title">歯が折れた</h3>
+                    <div class="treatment-card__image-placeholder"></div>
+                    <div class="treatment-card__arrow-wrapper">
+                        <span class="treatment-card__arrow"></span>
+                    </div>
+                </a>
+                <a href="treatment.html" class="treatment-card">
+                    <h3 class="treatment-card__title">歯が黄色いのが気になる</h3>
+                    <div class="treatment-card__image-placeholder"></div>
+                    <div class="treatment-card__arrow-wrapper">
+                        <span class="treatment-card__arrow"></span>
+                    </div>
+                </a>
+                <a href="treatment.html" class="treatment-card">
+                    <h3 class="treatment-card__title">歯が抜けた</h3>
+                    <div class="treatment-card__image-placeholder"></div>
+                    <div class="treatment-card__arrow-wrapper">
+                        <span class="treatment-card__arrow"></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section treatment-answer">
+
+        <div class="wrapper">
+            <div class="section-header">
+                <h2 class="section-title">お悩み別の治療内容</h2>
+                <p class="section-title-english">Treatment by Concern</p>
+            </div>
+            <div class="treatment-answer-body">
+                <ol class="treatment-answer-container">
+                    <li class="box-raduis treatment-answer-cards">
+                        <div class="treatment-answer-card__head">
+                            <span class="treatment-answer-card__number">1</span>
+                            <h4 class="treatment-answer-card__title">歯が痛い（虫歯治療）</h4>
+                        </div>
+                        <div class="treatment-answer-card">
+                            <img src="images/gallery/treatment-answer1.png" alt="歯が痛い時のイラスト"
+                                class="treatment-answer-img">
+                            <div class="treatment-answer-card__text-box1">
+                                <p class="treatment-answer-card__text">
+                                    「痛い」「しみる」といった症状は、虫歯のサインかもしれません。当院では、できるだけ痛みを抑えた治療を心がけ、歯を削る範囲も最小限に留めます。まずはしっかりと診察し、現在の状態をわかりやすくご説明いたします。
+                                </p>
+                                <div class="treatment-answer-card__text-box2">
+                                    <div class="treatment-answer-card__text-box2-title">当院の考え方</div>
+                                    <p class="treatment-answer-card__text-box2-text">
+                                        すぐに削る・抜くという選択ではなく、まずは状態を正確に把握し、患者さまと相談しながら治療方針を決定します。必要以上の治療はいたしません。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+
+                <ol class="treatment-answer-container">
+                    <li class="box-raduis treatment-answer-cards">
+                        <div class="treatment-answer-card__head">
+                            <span class="treatment-answer-card__number">2</span>
+                            <h4 class="treatment-answer-card__title">歯ぐきがしみる（歯周病治療）</h4>
+                        </div>
+                        <div class="treatment-answer-card">
+                            <img src="images/gallery/treatment-answer1.png" alt="歯が痛い時のイラスト"
+                                class="treatment-answer-img">
+                            <div class="treatment-answer-card__text-box1">
+                                <p class="treatment-answer-card__text">
+                                    歯ぐきがしみるのは、歯ぐきの炎症や、歯の根元が露出していることが原因の可能性があります。特に、歯周病や、力がかかりすぎている場合、間違ったブラッシング習慣によっても歯ぐきは敏感になります。当院では、まず原因を正確に特定し、患者さまに合ったケア方法や治療法をご提案いたします。
+                                </p>
+                                <div class="treatment-answer-card__text-box2">
+                                    <div class="treatment-answer-card__text-box2-title">当院の考え方</div>
+                                    <p class="treatment-answer-card__text-box2-text">
+                                        歯ぐきのトラブルは、放置すると悪化する可能性があります。ご自宅でのケアはもちろんですが、正しいブラッシング指導や、歯周病治療を行うことで、症状を改善することができます。また、知覚過敏がひどい場合は、専用の薬剤を塗布することでしみるのを防ぐことも可能です。まずは痛みの原因を見極め、患者さまにとって最善の方法を一緒に考えさせてください。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+
+                <ol class="treatment-answer-container">
+                    <li class="box-raduis treatment-answer-cards">
+                        <div class="treatment-answer-card__head">
+                            <span class="treatment-answer-card__number">3</span>
+                            <h4 class="treatment-answer-card__title">歯が折れた</h4>
+                        </div>
+                        <div class="treatment-answer-card">
+                            <img src="images/gallery/treatment-answer1.png" alt="歯が痛い時のイラスト"
+                                class="treatment-answer-img">
+                            <div class="treatment-answer-card__text-box1">
+                                <p class="treatment-answer-card__text">
+                                    歯が折れた、欠けたといった場合、できる限りご自身の歯を活かすことを第一に考えた治療法をご提案いたします。オフィスホワイトニングとホームホワイトニングをご用意しております。どちらも安全性の高い薬剤を使用し、歯科医師の管理のもとで行います。カウンセリングで、お一人おひとりのご希望やお悩みをしっかり伺い、最適な方法をご提案させていただきます。
+                                </p>
+                                <div class="treatment-answer-card__text-box2">
+                                    <div class="treatment-answer-card__text-box2-title">当院の考え方</div>
+                                    <p class="treatment-answer-card__text-box2-text">
+                                        歯が折れたり欠けたりした場合は、状態に応じて歯科用プラスチック（レジン）で修復したり、詰め物（インレー）や被せ物（クラウン）で治療したりします。もし歯の根が割れていたり、歯を支える骨にまで影響が及んでいる場合は、抜歯が必要になることもありますが、その場合でも、できる限り歯の神経や周囲の組織を保存するよう努めます。また、抜歯が必要になった場合でも、その後の選択肢（インプラントやブリッジなど）についてもしっかりとご説明し、患者さまが納得のいく治療を受けられるようサポートいたします。まずは、お口の状態を詳しく診察させてください。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+
+                <ol class="treatment-answer-container">
+                    <li class="box-raduis treatment-answer-cards">
+                        <div class="treatment-answer-card__head">
+                            <span class="treatment-answer-card__number">4</span>
+                            <h4 class="treatment-answer-card__title">歯が黄色いのが気になる</h4>
+                        </div>
+                        <div class="treatment-answer-card">
+                            <img src="images/gallery/treatment-answer1.png" alt="歯が痛い時のイラスト"
+                                class="treatment-answer-img">
+                            <div class="treatment-answer-card__text-box1">
+                                <p class="treatment-answer-card__text">
+                                    歯の色が気になる、黄ばみが気になるというお悩みには、ホワイトニングがおすすめです。当院では、歯科医師の管理のもと、安全性の高い薬剤を使用したホワイトニングを行っております。ご希望の白さや、ライフスタイルに合わせて、オフィスホワイトニングとホームホワイトニングのどちらか、あるいは両方を組み合わせたプランをご提案いたします。カウンセリングで、お一人おひとりのご希望やお悩みをしっかり伺い、最適な方法をご提案させていただきます。
+                                </p>
+                                <div class="treatment-answer-card__text-box2">
+                                    <div class="treatment-answer-card__text-box2-title">当院の考え方</div>
+                                    <p class="treatment-answer-card__text-box2-text">
+                                        オフィスホワイトニングは、短時間で効果を実感したい方におすすめです。医院で専門的な薬剤を使って集中的に歯を白くします。ホームホワイトニングは、ご自宅で自分のペースでじっくりと歯を白くしていく方法です。どちらの方法が適しているかは、お口の状態やライフスタイルによって異なりますので、お気軽にご相談ください。また、ホワイトニングは定期的なメンテナンスを行うことで、白さを持続させることができます。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+
+                <ol class="treatment-answer-container">
+                    <li class="box-raduis treatment-answer-cards">
+                        <div class="treatment-answer-card__head">
+                            <span class="treatment-answer-card__number">5</span>
+                            <h4 class="treatment-answer-card__title">歯が抜けた（インプラント治療）</h4>
+                        </div>
+                        <div class="treatment-answer-card">
+                            <img src="images/gallery/treatment-answer1.png" alt="歯が痛い時のイラスト"
+                                class="treatment-answer-img">
+                            <div class="treatment-answer-card__text-box1">
+                                <p class="treatment-answer-card__text">
+                                    歯が抜けた場合、その後の治療法としては、入れ歯、ブリッジ、インプラントの3つの選択肢があります。どの治療法が適しているかは、抜けた歯の本数や位置、患者さまの噛み合わせの状態などによって異なります。それぞれの治療法にはメリット・デメリットがありますので、まずは、お口の状態を詳しく診察させてください。
+                                </p>
+                                <div class="treatment-answer-card__text-box2">
+                                    <div class="treatment-answer-card__text-box2-title">当院の考え方</div>
+                                    <p class="treatment-answer-card__text-box2-text">
+                                        入れ歯は、保険適用のものから、金属のバネを使わないノンクラスプデンチャー、チタン床義歯、インプラントと併用するオーバーデンチャーなど、様々な種類があります。ブリッジは、両隣の歯を支えにして失った歯を補う方法で、安定した噛み心地が得られます。インプラントは、あごの骨に人工歯根を埋め込む方法で、天然の歯に近い噛み心地と見た目を実現できます。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+
+            <p class="note">
+                治療の途中でも、疑問や不安があればいつでもお伝えください。<br>分からないまま進めることはありません。
+            </p>
+
+        </div>
+    </section>
+
+    <footer>
+        <section class="section footer-below footer-below-vision">
+            <div class="footer-below-header">
+                <div class="wrapper">
+                    <!-- テキストの条件分岐
+                         トップページ: お口のお悩み、お気軽にご相談ください
+                         子ページ: タイトルが入ります（仮）
+                    -->
+                    <h2 class="footer-below-title">
+                        <?php echo $footer_below_title ?? 'お口のお悩み、お気軽にご相談ください'; ?>
+                    </h2>
+                    <p class="footer-below-title-sub">
+                        <?php echo $footer_below_title_sub ?? '初めての方も安心してご来院いただけます'; ?>
+                    </p>
+                </div>
+            </div>
+
+            <div class="wrapper">
+                <div class="footer-below-content">
+                    <div class="footer-below-buttons">
+                        <a href="#" class="button-reservation footer-below-button">
+                            <div class="button-text">
+                                <span class="button-sub">24時間受付</span>
+                                <span class="button-main">WEB予約</span>
+                            </div>
+                        </a>
+                        <a href="tel:011-123-456" class="button-reservation footer-below-button">
+                            <div class="button-text">
+                                <span class="button-sub">平日18:30・土曜13:15まで</span>
+                                <span class="button-main">011-123-456</span>
+                            </div>
+                        </a>
+                    </div>
+                    <p class="footer-below-note">
+                        <?php echo $footer_below_note ?? '※急患の方は診療時間内にお電話でご連絡ください'; ?>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer-inner wrapper">
+            <h1 class="footer-logo">
+                <a href="index.html" class="footer-link">
+                    <img src="images/icon/logo.png" alt="さわやか歯科クリニックのロゴ">
+                </a>
+            </h1>
+
+            <address class="footer-content">
+                <p>〒003-0236 札幌市厚別区厚別中央2条1丁目4-18 第29森川ビル1F</p>
+                <p>TEL 011-123-456</p>
+                <p>受付時間:平日 8:45〜13:15 / 14:15〜18:30 ・ 土曜 8:45〜13:15</p>
+                <p>休診日:日曜、祝日</p>
+            </address>
+
+            <div class="icon">
+                <ul class="icon-list">
+                    <li class="icon-item">
+                        <a href="" class="icon-link">
+                            <img src="images/icon/X-logo.png" alt="Xのアイコン">
+                        </a>
+                    </li>
+                    <li class="icon-item">
+                        <a href="" class="icon-link">
+                            <img src="images/icon/Instagram-logo.png" alt="instagramのアイコン">
+                        </a>
+                    </li>
+                    <li class="icon-item">
+                        <a href="" class="icon-link">
+                            <img src="images/icon/Facebook-logo.png" alt="facebookのアイコン">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="footer-copy">
+            <small>&copy;Copyright 2026 さわやか歯科クリニック All rights reserved.</small>
+        </p>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

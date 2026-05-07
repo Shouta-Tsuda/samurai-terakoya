@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>さわやか歯科クリニック</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vegas/dist/vegas.min.css">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://unpkg.com/vegas/dist/vegas.iife.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header__inner wrapper">
+            <h1 class="header__logo">
+                <a href="index.html" class="header-link">
+                    <img src="images/icon/logo.png" alt="さわやか歯科クリニックのロゴ">
+                </a>
+            </h1>
+
+            <div class="header__menu">
+                <nav class="header__nav">
+                    <ul class="header__nav_list">
+                        <li class="header__nav_item">
+                            <a href="index.html" class="header__nav-link">ホーム</a>
+                        </li>
+                        <li class="header__nav_item">
+                            <a href="treatment.html" class="header__nav-link">診療案内</a>
+                        </li>
+                        <li class="header__nav_item">
+                            <a href="first.html" class="header__nav-link">初めての方へ</a>
+                        </li>
+                        <li class="header__nav_item">
+                            <a href="about.html" class="header__nav-link">当院について</a>
+                        </li>
+                        <li class="header__nav_item">
+                            <a href="vision.html" class="header__nav-link">診療方針</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="header__cta">
+                    <a href="#" class="button-reservation">
+                        かんたんWEB予約
+                    </a>
+                    <!-- ボタンのクラス名はサイト全体で統一 -->
+
+                    <div class="header__tel">011-123-456</div>
+                </div>
+            </div>
+
+            <!--1024px以下でナビを開閉するハンバーガーボタン -->
+            <button class="hamburger" type="button" aria-label="メニュー" aria-expanded="false">
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+            </button>
+
+        </div>
+    </header>
+
+    <div class="firstview-child">
+        <img src="images/fv/about-slide.jpg" alt="さわやか歯科クリニックのスタッフとお客様">
+        <!-- 画像サイズを1200*400に変更⇒fireflyでupscale -->
+        <div class="firstview-child__content">
+            <p>当院について</p>
+            <p>地域の中で、長く頼れる歯医者であるために</p>
+        </div>
+    </div>
+
+    <section class="section about-first">
+
+        <div class="wrapper about-first-body">
+            <div class="section-header">
+                <h2 class="section-title">当院の考え</h2>
+                <p class="section-title-english">Our Policy</p>
+            </div>
+
+            <p class="sub-text">
+                私たちは「治す」だけでなく、<br>安心して通い続けられる関係づくりを大切にしています。
+            </p>
+
+            <div class="about-first-cards">
+                <div class="about-first-card">
+                    <div class="about-first-card__head">
+                        <span class="about-first-card__number">1</span>
+                        <h3>必要以上の治療はしない</h3>
+                    </div>
+                    <p class="about-first-card__text">
+                        本当に必要な処置だけをご提案します。不要な治療を勧めることはありません。</p>
+                </div>
+
+                <div class="about-first-card">
+                    <div class="about-first-card__head">
+                        <span class="about-first-card__number">2</span>
+                        <h3>納得してから進める</h3>
+                    </div>
+                    <p class="about-first-card__text">説明をしっかり聞いて、ご自身で選んでいただくことを大切にしています。</p>
+                </div>
+
+                <div class="about-first-card">
+                    <div class="about-first-card__head">
+                        <span class="about-first-card__number">3</span>
+                        <h3>無理なく通えることを重視</h3>
+                    </div>
+                    <p class="about-first-card__text">生活のペースに合わせた通院計画で、続けやすい治療を目指します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section about-second">
+
+        <div class="wrapper about-second-body">
+            <div class="section-header">
+                <h2 class="section-title">スタッフ・チーム医療</h2>
+                <p class="section-title-english">Staff / Team Medical</p>
+            </div>
+
+            <div class="about-second-container">
+                <img src="images/gallery/vision_staff.png" alt="さわやか歯科クリニックスタッフ一同" class="about-second-container-img">
+                <dl class="about-second-cards">
+                    <div class="about-second-card">
+                        <dt class="about-second-card__head">情報共有を大切にしています</dt>
+                        <dd class="about-second-card__text">患者さまの状況や治療方針は、スタッフ全員で共有。誰が対応しても、安心して治療を受けていただける体制を整えています。
+                        </dd>
+                    </div>
+                    <div class="about-second-card">
+                        <dt class="about-second-card__head">方針がブレない仕組み</dt>
+                        <dd class="about-second-card__text">定期的なミーティングで治療内容を確認し、一貫性のあるケアを提供できるよう努めています。</dd>
+                    </div>
+                </dl>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section about-third">
+
+        <div class="wrapper about-third-body">
+            <div class="about-third-text-container">
+                <div class="section-header">
+                    <h2 class="section-title">歯科治療は“信頼関係”から始まる</h2>
+                    <p class="section-title-english">Message</p>
+                </div>
+
+                <div class="about-third-text-content">
+                    <p class="about-third-text">
+                        歯科医院に来られる方は、何かしらの不安や悩みを抱えていらっしゃいます。<br>
+                        だからこそ、まずはお話を聞くことから始めたい。どんなことが気になっているのか、どんな治療なら無理なく続けられそうか。<br>
+                        一人ひとりの生活リズムや価値観は違います。その方にとって本当に必要で、続けられる治療を一緒に考えていきたいと思っています。<br>
+                        「ここなら安心して通える」と感じていただける、そんなクリニックでありたいと願っています。
+                    </p>
+                    <p class="about-third-director">
+                        院長：松本 貴子（まつもと たかこ）
+                    </p>
+                </div>
+            </div>
+            <div class="about-third-img">
+                <img src="images/gallery/doctor_matsumoto2.png" alt="院長 松本貴子" class="about-third-img-content">
+            </div>
+        </div>
+    </section>
+
+    <!-- 続きはここから -->
+
+    <section class="section about-fourth">
+
+        <div class="wrapper about-fourth-body">
+            <div class="section-header">
+                <h2 class="section-title">院内環境・通いやすさ</h2>
+                <p class="section-title-english">In-Clinic Environment / Accessibility</p>
+            </div>
+
+            <div class="about-fourth-container">
+                <div class="about-fourth-content">
+                    <div class="about-fourth-content-img">
+                        <img src="images/gallery/gallery_waitingroom1.png" alt="待合室"
+                            class="about-fourth-content-img-content">
+                    </div>
+                    <div class="about-fourth-card">
+                        <h3 class="about-fourth-card__head">
+                            配慮していること
+                        </h3>
+                        <ul class="about-fourth-card__text">
+                            <li>バリアフリー設計で、車椅子・ベビーカーでも入りやすい入口</li>
+                            <li>駐車場完備で、お車での通院もスムーズ</li>
+                            <li>予約優先制で、待ち時間を最小限に</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="about-fourth-content">
+                    <div class="about-fourth-content-img">
+                        <img src="images/gallery/gallery_examinationroom1.png" alt="診療室"
+                            class="about-fourth-content-img-content">
+                    </div>
+                    <div class="about-fourth-card">
+                        <h3 class="about-fourth-card__head">
+                            衛生管理・安全への取り組み
+                        </h3>
+                        <ul class="about-fourth-card__text">
+                            <li>滅菌・消毒の徹底</li>
+                            <li>使い捨て器具の活用</li>
+                            <li>感染対策の徹底</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </section>
+
+
+
+    <footer>
+        <section class="section footer-below footer-below-about">
+            <div class="footer-below-header">
+                <div class="wrapper">
+                    <!-- テキストの条件分岐
+                         トップページ: お口のお悩み、お気軽にご相談ください
+                         子ページ: タイトルが入ります（仮）
+                    -->
+                    <h2 class="footer-below-title">
+                        <?php echo $footer_below_title ?? 'お口のお悩み、お気軽にご相談ください'; ?>
+                    </h2>
+                    <p class="footer-below-title-sub">
+                        <?php echo $footer_below_title_sub ?? '初めての方も安心してご来院いただけます'; ?>
+                    </p>
+                </div>
+            </div>
+
+            <div class="wrapper">
+                <div class="footer-below-content">
+                    <div class="footer-below-buttons">
+                        <a href="#" class="button-reservation footer-below-button">
+                            <div class="button-text">
+                                <span class="button-sub">24時間受付</span>
+                                <span class="button-main">WEB予約</span>
+                            </div>
+                        </a>
+                        <a href="tel:011-123-456" class="button-reservation footer-below-button">
+                            <div class="button-text">
+                                <span class="button-sub">平日18:30・土曜13:15まで</span>
+                                <span class="button-main">011-123-456</span>
+                            </div>
+                        </a>
+                    </div>
+                    <p class="footer-below-note">
+                        <?php echo $footer_below_note ?? '※急患の方は診療時間内にお電話でご連絡ください'; ?>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer-inner wrapper">
+            <h1 class="footer-logo">
+                <a href="index.html" class="footer-link">
+                    <img src="images/icon/logo.png" alt="さわやか歯科クリニックのロゴ">
+                </a>
+            </h1>
+
+            <address class="footer-content">
+                <p>〒003-0236 札幌市厚別区厚別中央2条1丁目4-18 第29森川ビル1F</p>
+                <p>TEL 011-123-456</p>
+                <p>受付時間:平日 8:45〜13:15 / 14:15〜18:30 ・ 土曜 8:45〜13:15</p>
+                <p>休診日:日曜、祝日</p>
+            </address>
+
+            <div class="icon">
+                <ul class="icon-list">
+                    <li class="icon-item">
+                        <a href="" class="icon-link">
+                            <img src="images/icon/X-logo.png" alt="Xのアイコン">
+                        </a>
+                    </li>
+                    <li class="icon-item">
+                        <a href="" class="icon-link">
+                            <img src="images/icon/Instagram-logo.png" alt="instagramのアイコン">
+                        </a>
+                    </li>
+                    <li class="icon-item">
+                        <a href="" class="icon-link">
+                            <img src="images/icon/Facebook-logo.png" alt="facebookのアイコン">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="footer-copy">
+            <small>&copy;Copyright 2026 さわやか歯科クリニック All rights reserved.</small>
+        </p>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
